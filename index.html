@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prangon Chowdhury — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=JetBrains+Mono:wght@300;400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ─── THEMES ─── */
+[data-theme="dark"] {
+  --bg:      #0e1117;
+  --bg2:     #141820;
+  --bg3:     #1c2230;
+  --border:  rgba(255,255,255,0.07);
+  --border2: rgba(255,255,255,0.13);
+  --accent:  #e07b39;
+  --accent2: #f4a261;
+  --text:    #edf0f7;
+  --muted:   #5c6375;
+  --muted2:  #9ba3b8;
+  --card-bg: #141820;
+  --nav-bg:  rgba(14,17,23,0.88);
+  --badge-j: rgba(224,123,57,0.15);
+  --badge-jt:#e07b39;
+  --badge-c: rgba(244,162,97,0.15);
+  --badge-ct:#f4a261;
+  --green:   #56cfb2;
+  --shadow:  0 8px 32px rgba(0,0,0,0.45);
+  --toggle-bg: #1c2230;
+}
+[data-theme="light"] {
+  --bg:      #faf7f2;
+  --bg2:     #f3ede4;
+  --bg3:     #ede4d8;
+  --border:  rgba(180,150,110,0.18);
+  --border2: rgba(180,150,110,0.3);
+  --accent:  #c96a2b;
+  --accent2: #e08040;
+  --text:    #1a1410;
+  --muted:   #a08060;
+  --muted2:  #5a4535;
+  --card-bg: #faf7f2;
+  --nav-bg:  rgba(250,247,242,0.92);
+  --badge-j: rgba(201,106,43,0.12);
+  --badge-jt:#c96a2b;
+  --badge-c: rgba(224,128,64,0.12);
+  --badge-ct:#c96a2b;
+  --green:   #2a8a6a;
+  --shadow:  0 8px 32px rgba(120,80,40,0.10);
+  --toggle-bg: #ede4d8;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Outfit', sans-serif;
+  font-weight: 300;
+  overflow-x: hidden;
+  line-height: 1.6;
+  transition: background 0.3s, color 0.3s;
+}
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
+
+/* ─── THEME TOGGLE ─── */
+.theme-toggle {
+  position: fixed;
+  top: 50%;
+  right: 1.4rem;
+  transform: translateY(-50%);
+  z-index: 300;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+.toggle-track {
+  width: 36px;
+  height: 70px;
+  background: var(--toggle-bg);
+  border: 1px solid var(--border2);
+  border-radius: 20px;
+  cursor: pointer;
+  position: relative;
+  transition: background 0.3s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px;
+}
+.toggle-icon { font-size: 0.85rem; line-height: 1; user-select: none; }
+.toggle-thumb {
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  background: var(--accent);
+  border-radius: 50%;
+  top: 4px;
+  transition: top 0.35s cubic-bezier(0.4,0,0.2,1), background 0.3s;
+}
+[data-theme="light"] .toggle-thumb { top: calc(100% - 30px); }
+
+/* ─── NAV ─── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1rem 3rem;
+  background: var(--nav-bg);
+  backdrop-filter: blur(18px);
+  border-bottom: 1px solid var(--border);
+  transition: background 0.3s;
+}
+.nav-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem; font-weight: 700;
+  color: var(--text); text-decoration: none; letter-spacing: 0.01em;
+}
+.nav-logo span { color: var(--accent); }
+.nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+.nav-links a {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.67rem; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--muted2); text-decoration: none; transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--accent); }
+
+/* ─── HERO ─── */
+#home {
+  min-height: 100vh;
+  display: flex; align-items: center;
+  padding: 6rem 3rem 4rem;
+  max-width: 1160px; margin: 0 auto;
+  gap: 5rem;
+}
+.hero-left { flex: 1; min-width: 0; }
+.hero-tag {
+  display: inline-flex; align-items: center; gap: 0.6rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.67rem; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 1.4rem;
+  padding: 0.35rem 1rem;
+  border: 1px solid rgba(224,123,57,0.3);
+  border-radius: 100px;
+  background: var(--badge-j);
+}
+.hero-tag::before { content: '●'; font-size: 0.45rem; animation: blink 2s infinite; }
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.25} }
+
+h1.hero-name {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.8rem, 5vw, 4.4rem);
+  font-weight: 700; line-height: 1.08;
+  margin-bottom: 0.4rem; color: var(--text);
+}
+h1.hero-name em { color: var(--accent); font-style: italic; }
+.hero-role {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem; font-style: italic; color: var(--muted2); margin-bottom: 0.25rem;
+}
+.hero-inst {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.67rem; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1.8rem;
+}
+.hero-bio {
+  font-size: 0.97rem; line-height: 1.85; color: var(--muted2);
+  max-width: 520px; margin-bottom: 1rem;
+}
+.hero-bio strong { color: var(--text); font-weight: 500; }
+.hero-ubc {
+  font-size: 0.9rem; line-height: 1.8; color: var(--muted2);
+  max-width: 520px; margin-bottom: 2.2rem;
+  padding: 0.9rem 1.2rem;
+  border-left: 2px solid var(--accent);
+  background: var(--badge-j);
+  border-radius: 0 4px 4px 0;
+}
+.hero-ubc strong { color: var(--text); font-weight: 500; }
+
+.hero-links { display: flex; gap: 0.8rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
+.hero-link {
+  display: inline-flex; align-items: center; gap: 0.45rem;
+  font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 0.6rem 1.3rem; text-decoration: none; border-radius: 3px; transition: all 0.22s;
+}
+.hl-primary { background: var(--accent); color: #fff; }
+.hl-primary:hover { background: var(--accent2); }
+.hl-ghost { border: 1px solid var(--border2); color: var(--muted2); }
+.hl-ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+/* ─── PHOTO ─── */
+.hero-right { flex-shrink: 0; }
+.photo-container { position: relative; width: 290px; }
+.photo-label {
+  font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--muted); text-align: center; margin-bottom: 0.7rem;
+}
+.photo-wrap {
+  width: 290px; height: 350px;
+  border: 1.5px solid var(--border2);
+  border-radius: 4px; overflow: hidden;
+  position: relative; cursor: pointer; background: var(--bg3);
+  transition: border-color 0.3s;
+}
+.photo-wrap:hover { border-color: var(--accent); }
+.photo-wrap img {
+  width: 100%; height: 100%; object-fit: cover; object-position: center top;
+  display: block;
+}
+.photo-corner {
+  position: absolute; width: 18px; height: 18px;
+  border-color: var(--accent); border-style: solid; opacity: 0.7;
+}
+.pc-tl { top: 0; left: 0; border-width: 2px 0 0 2px; }
+.pc-tr { top: 0; right: 0; border-width: 2px 2px 0 0; }
+.pc-bl { bottom: 0; left: 0; border-width: 0 0 2px 2px; }
+.pc-br { bottom: 0; right: 0; border-width: 0 2px 2px 0; }
+.photo-badge {
+  position: absolute; bottom: -14px; right: -14px;
+  background: var(--accent); color: #fff;
+  padding: 0.75rem 1rem; text-align: center; border-radius: 3px;
+}
+.pb-num { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; line-height: 1; }
+.pb-txt { font-family: 'JetBrains Mono', monospace; font-size: 0.52rem; letter-spacing: 0.1em; text-transform: uppercase; margin-top: 0.2rem; }
+
+/* ─── DIVIDER / SECTION ─── */
+.sec-divider { width: 100%; max-width: 1100px; margin: 0 auto; height: 1px; background: var(--border); }
+.section-wrap { max-width: 1100px; margin: 0 auto; padding: 6rem 3rem; }
+.sec-header { display: flex; align-items: baseline; gap: 1.2rem; margin-bottom: 3rem; }
+.sec-num { font-family: 'JetBrains Mono', monospace; font-size: 0.63rem; color: var(--accent); letter-spacing: 0.2em; }
+.sec-title { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3vw, 2.4rem); font-weight: 600; }
+.sec-line { flex: 1; height: 1px; background: var(--border); margin-bottom: 4px; }
+
+/* ─── ABOUT ─── */
+#about { background: var(--bg2); }
+.about-grid { display: grid; grid-template-columns: 1.35fr 1fr; gap: 5rem; align-items: start; }
+.about-text p { font-size: 0.94rem; line-height: 1.9; color: var(--muted2); margin-bottom: 1rem; }
+.about-text p strong { color: var(--text); font-weight: 500; }
+
+.tabs-header { display: flex; border-bottom: 1px solid var(--border); margin: 2rem 0 1.5rem; }
+.tab-btn {
+  font-family: 'JetBrains Mono', monospace; font-size: 0.63rem; letter-spacing: 0.12em; text-transform: uppercase;
+  padding: 0.55rem 1.1rem; color: var(--muted); cursor: pointer;
+  border: none; border-bottom: 2px solid transparent; background: none; transition: all 0.2s;
+}
+.tab-btn.active { color: var(--accent); border-bottom-color: var(--accent); }
+.tab-content { display: none; }
+.tab-content.active { display: block; }
+
+.edu-item { padding: 0.85rem 0; border-bottom: 1px solid var(--border); }
+.edu-degree { font-family: 'Playfair Display', serif; font-size: 0.97rem; font-weight: 600; color: var(--text); margin-bottom: 0.22rem; }
+.edu-school { font-size: 0.83rem; color: var(--muted2); margin-bottom: 0.15rem; }
+.edu-year { font-family: 'JetBrains Mono', monospace; font-size: 0.63rem; color: var(--accent); letter-spacing: 0.07em; }
+.exp-item { padding: 0.85rem 0; border-bottom: 1px solid var(--border); }
+.exp-title { font-family: 'Playfair Display', serif; font-size: 0.97rem; font-weight: 600; color: var(--text); }
+.exp-org { font-size: 0.83rem; color: var(--accent); margin: 0.18rem 0; }
+.exp-period { font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; color: var(--muted); letter-spacing: 0.07em; margin-bottom: 0.3rem; }
+.exp-detail { font-size: 0.82rem; color: var(--muted2); line-height: 1.6; }
+.interest-cloud { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1rem; }
+.itag { display: flex; align-items: center; gap: 0.4rem; font-size: 0.88rem; color: var(--muted2); }
+
+.skills-panel {}
+.skill-group { margin-bottom: 1.6rem; }
+.skill-group-label { font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.75rem; }
+.skill-cloud { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+.stag {
+  font-family: 'JetBrains Mono', monospace; font-size: 0.63rem; letter-spacing: 0.05em;
+  padding: 0.28rem 0.75rem; border: 1px solid var(--border2); color: var(--muted2);
+  border-radius: 100px; transition: all 0.2s; cursor: default;
+}
+.stag:hover { border-color: var(--accent); color: var(--accent); background: var(--badge-j); }
+
+/* ─── PUBLICATIONS ─── */
+#publications { background: var(--bg); }
+.pub-filters { display: flex; gap: 0.55rem; margin-bottom: 2.2rem; flex-wrap: wrap; }
+.pf-btn {
+  font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 0.38rem 1rem; border: 1px solid var(--border2); color: var(--muted2); cursor: pointer;
+  background: none; border-radius: 2px; transition: all 0.2s;
+}
+.pf-btn.active, .pf-btn:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+.pub-grid { display: flex; flex-direction: column; gap: 0.9rem; }
+.pub-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  padding: 1.4rem 1.8rem;
+  display: grid;
+  grid-template-columns: 64px 1fr auto;
+  gap: 1.4rem;
+  align-items: start;
+  transition: border-color 0.22s, transform 0.2s;
+}
+.pub-card:hover { border-color: var(--accent); transform: translateX(4px); box-shadow: var(--shadow); }
+.pub-year { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; color: var(--muted); letter-spacing: 0.05em; padding-top: 3px; text-align: right; }
+.pub-type-badge {
+  display: inline-block;
+  font-family: 'JetBrains Mono', monospace; font-size: 0.56rem; letter-spacing: 0.12em; text-transform: uppercase;
+  padding: 0.16rem 0.6rem; border-radius: 100px; margin-bottom: 0.45rem;
+}
+.badge-journal { background: var(--badge-j); color: var(--badge-jt); }
+.badge-conference { background: var(--badge-c); color: var(--badge-ct); }
+.badge-thesis { background: rgba(86,207,178,0.12); color: var(--green); }
+.pub-title { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 600; line-height: 1.33; margin-bottom: 0.38rem; color: var(--text); }
+.pub-authors { font-size: 0.8rem; color: var(--muted2); margin-bottom: 0.32rem; line-height: 1.5; }
+.pub-authors strong { color: var(--accent); font-weight: 500; }
+.pub-venue { font-size: 0.8rem; font-style: italic; color: var(--muted); }
+.pub-if {
+  display: inline-flex; align-items: center; gap: 0.25rem;
+  font-family: 'JetBrains Mono', monospace; font-size: 0.56rem;
+  padding: 0.13rem 0.5rem; background: rgba(86,207,178,0.12); color: var(--green);
+  border-radius: 100px; margin-left: 0.4rem; vertical-align: middle; white-space: nowrap;
+}
+.pub-actions { display: flex; flex-direction: column; gap: 0.4rem; }
+.pub-btn {
+  font-family: 'JetBrains Mono', monospace; font-size: 0.58rem; color: var(--accent);
+  text-decoration: none; padding: 0.35rem 0.75rem;
+  border: 1px solid rgba(224,123,57,0.3); border-radius: 2px;
+  white-space: nowrap; transition: all 0.2s; display: inline-block; text-align: center;
+}
+.pub-btn:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
+.pub-btn.disabled { opacity: 0.4; cursor: default; pointer-events: none; }
+
+/* ─── TRAINING ─── */
+#training { background: var(--bg2); }
+.training-card {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  padding: 2rem;
+}
+.tc-title { font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 600; color: var(--text); margin-bottom: 0.25rem; }
+.tc-org { font-size: 0.85rem; color: var(--accent); margin-bottom: 0.18rem; }
+.tc-period { font-family: 'JetBrains Mono', monospace; font-size: 0.63rem; color: var(--muted); letter-spacing: 0.07em; margin-bottom: 0.6rem; }
+.tc-badge {
+  display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 0.58rem;
+  padding: 0.18rem 0.6rem; background: rgba(244,162,97,0.12); color: var(--accent2);
+  border-radius: 100px; margin-bottom: 1rem; letter-spacing: 0.05em;
+}
+.tc-bullets { display: flex; flex-direction: column; gap: 0.4rem; }
+.tc-bullet { font-size: 0.85rem; color: var(--muted2); padding-left: 1.1rem; position: relative; line-height: 1.6; }
+.tc-bullet::before { content: '▸'; position: absolute; left: 0; color: var(--accent); font-size: 0.68rem; top: 4px; }
+
+/* ─── CONTACT ─── */
+#contact { background: var(--bg); }
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+.contact-intro p { font-size: 0.95rem; line-height: 1.9; color: var(--muted2); margin-bottom: 2rem; }
+.social-links { display: flex; flex-direction: column; gap: 0.9rem; }
+.social-link {
+  display: flex; align-items: center; gap: 1rem;
+  padding: 0.9rem 1.2rem;
+  background: var(--bg2); border: 1px solid var(--border);
+  text-decoration: none; color: var(--muted2); transition: all 0.22s; border-radius: 3px;
+}
+.social-link:hover { border-color: var(--accent); color: var(--text); }
+.social-link:hover .sl-icon { color: var(--accent); }
+.sl-icon { color: var(--muted); transition: color 0.2s; flex-shrink: 0; }
+.sl-info { flex: 1; }
+.sl-label { font-family: 'JetBrains Mono', monospace; font-size: 0.58rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.18rem; }
+.sl-val { font-size: 0.87rem; }
+
+.contact-form { display: flex; flex-direction: column; gap: 0.9rem; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem; }
+.field { display: flex; flex-direction: column; gap: 0.38rem; }
+.field label { font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+.field input, .field textarea {
+  background: var(--bg2); border: 1px solid var(--border2);
+  padding: 0.75rem 1rem; font-family: 'Outfit', sans-serif; font-size: 0.88rem;
+  color: var(--text); outline: none; transition: border-color 0.2s; resize: none; border-radius: 3px;
+}
+.field input:focus, .field textarea:focus { border-color: var(--accent); }
+.field textarea { min-height: 120px; }
+.send-btn {
+  font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase;
+  padding: 0.82rem 2rem; background: var(--accent); color: #fff; border: none;
+  cursor: pointer; transition: all 0.22s; border-radius: 3px;
+}
+.send-btn:hover { background: var(--accent2); }
+
+/* ─── FOOTER ─── */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 1.8rem 3rem;
+  display: flex; justify-content: space-between; align-items: center;
+  font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; color: var(--muted); letter-spacing: 0.06em;
+  max-width: 1100px; margin: 0 auto;
+}
+
+/* ─── ANIMATIONS ─── */
+@keyframes fadeUp { from { opacity:0; transform:translateY(18px); } to { opacity:1; transform:translateY(0); } }
+.hero-left > * { animation: fadeUp 0.55s ease both; }
+.hero-tag   { animation-delay: 0.05s; }
+h1.hero-name{ animation-delay: 0.14s; }
+.hero-role  { animation-delay: 0.2s; }
+.hero-inst  { animation-delay: 0.26s; }
+.hero-bio   { animation-delay: 0.32s; }
+.hero-ubc   { animation-delay: 0.38s; }
+.hero-links { animation-delay: 0.44s; }
+.hero-right { animation: fadeUp 0.75s 0.25s ease both; }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 900px) {
+  nav { padding: 1rem 1.5rem; }
+  .nav-links { gap: 1.2rem; }
+  #home { flex-direction: column; align-items: flex-start; gap: 3rem; padding-top: 7rem; }
+  .photo-wrap, .photo-container { width: 240px; height: 300px; }
+  .section-wrap { padding: 4rem 1.5rem; }
+  .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .form-row { grid-template-columns: 1fr; }
+  footer { flex-direction: column; gap: 0.5rem; text-align: center; padding: 1.5rem; }
+  .theme-toggle { top: auto; bottom: 1.5rem; transform: none; }
+}
+@media (max-width: 600px) {
+  .pub-card { grid-template-columns: 1fr; gap: 0.7rem; }
+  .pub-year { text-align: left; }
+  .pub-actions { flex-direction: row; }
+}
+</style>
+</head>
+<body>
+
+<!-- THEME TOGGLE -->
+<div class="theme-toggle" onclick="toggleTheme()" title="Toggle light/dark mode">
+  <div class="toggle-track">
+    <span class="toggle-icon">☀️</span>
+    <div class="toggle-thumb"></div>
+    <span class="toggle-icon">🌙</span>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="#home" class="nav-logo">Prangon <span>Chowdhury</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#publications">Publications</a></li>
+    <li><a href="#training">Training</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- ══════════ HERO ══════════ -->
+<section id="home">
+  <div class="hero-left">
+    <div class="hero-tag">Graduate Assistant · EEE · AUST</div>
+    <h1 class="hero-name">Prangon <em>Chowdhury</em></h1>
+    <p class="hero-role">Graduate Research Assistant</p>
+    <p class="hero-inst">Ahsanullah University of Science &amp; Technology · Dhaka, Bangladesh</p>
+    <p class="hero-bio">
+      I work at the intersection of <strong>energy systems</strong>, <strong>power electronics</strong>, and <strong>sustainable technology</strong> — from wireless EV charging and green hydrogen to smart grids and hybrid energy systems.
+    </p>
+    <div class="hero-ubc">
+      I will be an incoming student in <strong>Electrical and Computer Engineering</strong> at the <strong>University of British Columbia</strong>, working under the supervision of <strong>Prof. Juri Jatskevich</strong> in the Electric Power and Energy Systems group.
+    </div>
+    <div class="hero-links">
+      <a href="https://scholar.google.com/citations?user=YOqfydcAAAAJ&hl=en&oi=ao" target="_blank" class="hero-link hl-primary">
+        <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 14l9-5-9-5-9 5 9 5z"/><path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/></svg>
+        Google Scholar
+      </a>
+      <a href="https://www.linkedin.com/in/prangonchy-aust/" target="_blank" class="hero-link hl-ghost">
+        <svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+        LinkedIn
+      </a>
+      <a href="mailto:prangon.aust@gmail.com" class="hero-link hl-ghost">
+        <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+        Email Me
+      </a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="photo-container">
+      <div class="photo-label">Prangon Chowdhury</div>
+      <div class="photo-wrap">
+        <div class="photo-corner pc-tl"></div>
+        <div class="photo-corner pc-tr"></div>
+        <div class="photo-corner pc-bl"></div>
+        <div class="photo-corner pc-br"></div>
+        <img
+          src="https://scholar.googleusercontent.com/citations?view_op=medium_photo&user=YOqfydcAAAAJ&citpid=46"
+          alt="Prangon Chowdhury"
+          onerror="this.src='';this.style.display='none';document.getElementById('photo-fallback').style.display='flex';"
+        >
+        <div id="photo-fallback" style="display:none;width:100%;height:100%;align-items:center;justify-content:center;flex-direction:column;gap:0.8rem;color:var(--muted);font-family:'JetBrains Mono',monospace;font-size:0.68rem;text-align:center;padding:1rem;">
+          <svg width="48" height="48" fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+          Prangon Chowdhury
+        </div>
+      </div>
+      <div class="photo-badge">
+        <div class="pb-num">M.Sc.</div>
+        <div class="pb-txt">EEE · AUST</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ ABOUT ══════════ -->
+<div class="sec-divider"></div>
+<section id="about" style="background:var(--bg2);">
+<div class="section-wrap">
+  <div class="sec-header">
+    <span class="sec-num">01</span>
+    <h2 class="sec-title">About Me</h2>
+    <div class="sec-line"></div>
+  </div>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>
+        I am a <strong>Graduate Research Assistant</strong> in Electrical &amp; Electronic Engineering at Ahsanullah University of Science and Technology (AUST), Dhaka, Bangladesh. My work spans energy systems optimization, renewable energy integration, wireless power transfer, and power electronics.
+      </p>
+      <p>
+        I hold concurrent positions as a Graduate Research Assistant at both <strong>AUST</strong> and <strong>Brac University</strong>. I also serve as an active peer reviewer for journals published by Elsevier, Springer Nature, Nature Portfolio, Sage, and Tech Science Press.
+      </p>
+      <p>
+        My M.Sc. thesis focuses on the <strong>design of a co-optimized wireless power transfer system for vehicle-to-vehicle (V2V) applications</strong>, supervised by Prof. Omar Farrok.
+      </p>
+
+      <div class="about-tabs">
+        <div class="tabs-header">
+          <button class="tab-btn active" onclick="switchTab('edu', this)">Education</button>
+          <button class="tab-btn" onclick="switchTab('exp', this)">Experience</button>
+          <button class="tab-btn" onclick="switchTab('interests', this)">Interests</button>
+        </div>
+
+        <div class="tab-content active" id="tab-edu">
+          <div class="edu-item">
+            <div class="edu-degree">M.Sc. in Electrical &amp; Electronic Engineering</div>
+            <div class="edu-school">Ahsanullah University of Science and Technology, Dhaka</div>
+            <div class="edu-year">March 2024 – April 2026</div>
+          </div>
+          <div class="edu-item">
+            <div class="edu-degree">B.Sc. in Electrical &amp; Electronic Engineering</div>
+            <div class="edu-school">Ahsanullah University of Science and Technology, Dhaka</div>
+            <div class="edu-year">July 2019 – November 2023</div>
+          </div>
+        </div>
+
+        <div class="tab-content" id="tab-exp">
+          <div class="exp-item">
+            <div class="exp-title">Graduate Research Assistant</div>
+            <div class="exp-org">Ahsanullah University of Science and Technology (AUST)</div>
+            <div class="exp-period">May 2025 – Present</div>
+            <div class="exp-detail">Project: Performance Enhancement of the Modern Hybrid Electric Vehicle (ID: AIRG/2024/EEE/06/19)</div>
+          </div>
+          <div class="exp-item">
+            <div class="exp-title">Graduate Research Assistant</div>
+            <div class="exp-org">Brac University</div>
+            <div class="exp-period">February 2025 – August 2025</div>
+            <div class="exp-detail">Project: Developing Demand Side Management Techniques for Commercial Consumers</div>
+          </div>
+          <div class="exp-item">
+            <div class="exp-title">Journal Reviewer</div>
+            <div class="exp-org">Elsevier · Springer Nature · Nature Portfolio · Sage · Tech Science Press</div>
+            <div class="exp-period">2025 – Present</div>
+            <div class="exp-detail">Active reviewer for 20+ international journals across energy, electrical engineering, and sustainability domains.</div>
+          </div>
+        </div>
+
+        <div class="tab-content" id="tab-interests">
+          <p style="font-size:0.88rem;color:var(--muted2);margin-bottom:1rem;margin-top:0.5rem;line-height:1.8;">Beyond academia, I enjoy:</p>
+          <div class="interest-cloud">
+            <div class="itag">📷 Photography</div>
+            <div class="itag">🎵 Music</div>
+            <div class="itag">⚽ Football</div>
+            <div class="itag">🎬 Movies</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="skills-panel">
+      <div class="skill-group">
+        <div class="skill-group-label">Design &amp; Simulation</div>
+        <div class="skill-cloud">
+          <span class="stag">PLECS</span><span class="stag">MATLAB Simulink</span>
+          <span class="stag">DIgSILENT</span><span class="stag">ANSYS Maxwell</span>
+          <span class="stag">LTspice</span><span class="stag">PSpice</span>
+          <span class="stag">Proteus</span><span class="stag">Cadence Virtuoso</span>
+          <span class="stag">AutoCAD</span><span class="stag">PVsyst</span>
+          <span class="stag">Homer Pro</span><span class="stag">SAM</span>
+          <span class="stag">Powerworld</span><span class="stag">VOSviewer</span>
+          <span class="stag">Sketchup</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-label">Programming</div>
+        <div class="skill-cloud">
+          <span class="stag">Python</span><span class="stag">MATLAB</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-label">Office &amp; Productivity</div>
+        <div class="skill-cloud">
+          <span class="stag">MS Word</span><span class="stag">PowerPoint</span>
+          <span class="stag">Excel</span><span class="stag">Visio</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-label">Research Areas</div>
+        <div class="skill-cloud">
+          <span class="stag">Wireless Power Transfer</span>
+          <span class="stag">Power Electronics</span>
+          <span class="stag">Green Hydrogen</span>
+          <span class="stag">Hybrid Energy Systems</span>
+          <span class="stag">Smart Grids</span>
+          <span class="stag">EV Technology</span>
+          <span class="stag">Energy Optimization</span>
+          <span class="stag">Renewable Energy</span>
+          <span class="stag">Demand Side Mgmt</span>
+          <span class="stag">Microgrid</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ══════════ PUBLICATIONS ══════════ -->
+<div class="sec-divider"></div>
+<section id="publications" style="background:var(--bg);">
+<div class="section-wrap">
+  <div class="sec-header">
+    <span class="sec-num">02</span>
+    <h2 class="sec-title">Publications</h2>
+    <div class="sec-line"></div>
+  </div>
+  <div class="pub-filters">
+    <button class="pf-btn active" onclick="filterPubs('all',this)">All (19)</button>
+    <button class="pf-btn" onclick="filterPubs('journal',this)">Journals (15)</button>
+    <button class="pf-btn" onclick="filterPubs('conference',this)">Conference (4)</button>
+    <button class="pf-btn" onclick="filterPubs('thesis',this)">Thesis (2)</button>
+  </div>
+  <div class="pub-grid" id="pub-grid">
+
+    <!-- 2026 -->
+    <div class="pub-card" data-type="journal">
+      <div class="pub-year">2026</div>
+      <div>
+        <span class="pub-type-badge badge-journal">Journal</span>
+        <div class="pub-title">Grid-connected inverter for photovoltaic energy harvesting: Advances in topologies and control techniques</div>
+        <div class="pub-authors">Md. Kawsar Hossain, <strong>Prangon Chowdhury</strong>, Iffat Nowshin, Md. Rabiul Islam, Abdullah Al-Hysam, Omar Farrok</div>
+        <div class="pub-venue">Energy Conversion and Management: X, Elsevier · Vol. 29 <span class="pub-if">IF 7.6</span></div>
+      </div>
+      <div class="pub-actions">
+        <a href="https://doi.org/10.1016/j.ecmx.2025.101422" target="_blank" class="pub-btn">DOI ↗</a>
+        <a href="https://doi.org/10.1016/j.ecmx.2025.101422" target="_blank" class="pub-btn">PDF ↗</a>
+      </div>
+    </div>
+
+    <!-- 2025 – newest journals first -->
+    <div class="pub-card" data-type="journal">
+      <div class="pub-year">2025</div>
+      <div>
+        <span class="pub-type-badge badge-journal">Journal</span>
+        <div class="pub-title">Molten salt reactor neutronics and fuel cycle – review of advancements and potential future research directions</div>
+        <div class="pub-authors">E. B. Agyekum, F. Odoi-Yorke, T. Alkhrissat, F. L. Rashid, M. Jahangiri, <strong>Prangon Chowdhury</strong>, A. K. Hussein</div>
+        <div class="pub-venue">Energy Exploration &amp; Exploitation, Sage · Vol. 43, Issue 6 <span class="pub-if">IF 1.6</span></div>
+      </div>
+      <div class="pub-actions">
+        <a href="https://doi.org/10.1177/01445987251398017" target="_blank" class="pub-btn">DOI ↗</a>
+        <a href="https://doi.org/10.1177/01445987251398017" target="_blank" class="pub-btn">PDF ↗</a>
+      </div>
+    </div>
+
+    <div class="pub-card" data-type="journal">
+      <div class="pub-year">2025</div>
+      <div>
+        <span class="pub-type-badge badge-journal">Journal</span>
+        <div class="pub-title">Wireless charging for electric vehicles: A review on environmental, health, technical, and policy landscape</div>
+        <div class="pub-authors"><strong>Prangon Chowdhury</strong>, Md. Moinul Alom Shovon, Rahbaar Yeassin, Omar Farrok</div>
+        <div class="pub-venue">Energy Conversion and Management: X, Elsevier · Vol. 28 <span class="pub-if">IF 7.6</span></div>
+      </div>
+      <div class="pub-actions">
+        <a href="https://doi.org/10.1016/j.ecmx.2025.101363" target="_blank" class="pub-btn">DOI ↗</a>
+        <a href="https://doi.org/10.1016/j.ecmx.2025.101363" target="_blank" class="pub-btn">PDF ↗</a>
+      </div>
+    </div>
+
+    <div class="pub-card" data-type="journal">
+      <div class="pub-year">2025</div>
+      <div>
+        <span class="pub-type-badge badge-journal">Journal</span>
+        <div class="pub-title">Towards efficient energy management systems for electric vehicles: advances in control techniques and applications</div>
+        <div class="pub-authors">Ferdous S. Azad, Abidur Rahman, Surajit Das Barman, <strong>Prangon Chowdhury</strong>, Md Sawkat Ali, Omar Farrok</div>
+        <div class="pub-venue">Energy Conversion and Management: X, Elsevier · Vol. 28 <span class="pub-if">IF 7.6</span></div>
+      </div>
+      <div class="pub-actions">
+        <a href="https://doi.org/10.1016/j.ecmx.2025.101326" target="_blank" class="pub-btn">DOI ↗</a>
+        <a href="https://doi.org/10.1016/j.ecmx.2025.101326" target="_blank" class="pub-btn">PDF ↗</a>
+      </div>
+    </div>
+
+    <div class="pub-card" data-type="journal">
+      <div class="pub-year">2025</div>
+      <div>
+        <span class="pub-type-badge badge-journal">Journal</span>
+        <div class="pub-title">Power sector transformation in Bangladesh: Paving the pathways towards sustainable development</div>
+        <div class="pub-authors"><strong>Prangon Chowdhury</strong>, Tasniah Islam, Israt Jahan Tasmia, Nahid-Ur-Rahman Chowdhury</div>
+        <div class="pub-venue">Energy Strategy Reviews, Elsevier · Vol. 61 <span class="pub-if">IF 9.9</span></div>
+      </div>
+      <div class="pub-actions">
+        <a href="https://doi.org/10.1016/j.esr.2025.101829" target="_blank" class="pub-btn">DOI ↗</a>
+        <a href="https://doi.org/10.1016/j.esr.2025.101829" target="_blank" class="pub-btn">PDF ↗</a>
+      </div>
+    </div>
+
+    <div class="pub-card" data-type="journal">
+      <div class="pub-year">2025</div>
+      <div>
+        <span class="pub-type-badge badge-journal">Journal</span>
+        <div class="pub-title">Economic feasibility and environmental benefits of green hydrogen production in Southeast Asia using solar and wind energy</div>
+        <div class="pub-authors"><strong>Prangon Chowdhury</strong>, Prithibi Das, Rahbaar Yeassin, E. B. Agyekum, T. Alkhrissat, Omar Farrok</div>
+        <div class="pub-venue">Gas Science and Engineering, Elsevier · Vol. 143 <span class="pub-if">IF 5.5</span></div>
+      </div>
+      <div class="pub-actions">
+        <a href="https://doi.org/10.1016/j.jgsce.2025.205741" target="_blank" class="pub-btn">DOI ↗</a>
+        <a href="https://doi.org/10.1016/j.jgsce.2025.205741" target="_blank" class="pub-btn">PDF ↗</a>
+      </div>
+    </div>
+
+    <div class="pub-card" data-type="journal">
+      <div class="pub-year">2025</div>
+      <div>
+        <span class="pub-type-badge badge-journal">Journal</span>
+        <div class="pub-title">A state-of-the-art review of electrolyte systems for vanadium redox flow battery</div>
+        <div class="pub-authors">E. B. Agyekum, M. Abdullah, F. Odoi-Yorke, A. Ameen, <strong>Prangon Chowdhury</strong>, M. A. Raza, F. L. Rashid, A. K. Hussein</div>
+        <div class="pub-venue">Energy Conversion and Management: X, Elsevier · Vol. 27 <span class="pub-if">IF 7.6</span></div>
+      </div>
+      <div class="pub-actions">
+        <a href="https://doi.org/10.1016/j.ecmx.2025.101180" target="_blank" class="pub-btn">DOI ↗</a>
+        <a href="https://doi.org/10.1016/j.ecmx.2025.101180" target="_blank" class="pub-btn">PDF ↗</a>
+      </div>
+    </div>
+
+    <div class="pub-card" data-type="journal">
+      <div class="pub-year">2025</div>
+      <div>
+        <span class="pub-type-badge badge-journal">Journal</span>
+        <div class="pub-title">Exploring the potential of solar and wind-powered green hydrogen: Production, costs and environmental impacts in South Asia</div>
+        <div class="pub-authors"><strong>Prangon Chowdhury</strong>, Prithibi Das, Rahbaar Yeassin, E. B. Agyekum, M. I. Al-Maaitah, F. Odoi-Yorke</div>
+        <div class="pub-venue">International Journal of Hydrogen Energy, Elsevier · Vol. 137 <span class="pub-if">IF 8.3</span></div>
+      </div>
+      <div class="pub-actions">
+        <a href="https://doi.org/10.1016/j.ijhydene.2025.05.100" target="_blank" class="pub-btn">DOI ↗</a>
+        <a href="https://doi.org/10.1016/j.ijhydene.2025.05.100" target="_blank" class="pub-btn">PDF ↗</a>
+      </div>
+    </div>
+
+    <div class="pub-card" data-type="journal">
+      <div class="pub-year">2025</div>
+      <div>
+        <span class="pub-type-badge badge-journal">Journal</span>
+        <div class="pub-title">Investigating the nexus between radiolysis using spent nuclear fuel and hydrogen production, with environmental safety considerations</div>
+        <div class="pub-authors">E. B. Agyekum, F. Odoi-Yorke, M. Abdullah, <strong>Prangon Chowdhury</strong></div>
+        <div class="pub-venue">Nuclear Engineering and Design, Elsevier · Vol. 438 <span class="pub-if">IF 2.1</span></div>
+      </div>
+      <div class="pub-actions">
+        <a href="https://doi.org/10.1016/j.nucengdes.2025.114048" target="_blank" class="pub-btn">DOI ↗</a>
+        <a href="https://doi.org/10.1016/j.nucengdes.2025.114048" target="_blank" class="pub-btn">PDF ↗</a>
+      </div>
+    </div>
+
+    <div class="pub-card" data-type="journal">
+      <div class="pub-year">2025</div>
+      <div>
+        <span class="pub-type-badge badge-journal">Journal</span>
+        <div class="pub-title">Comparative performance evaluation of economic load dispatch using metaheuristic techniques: A practical case study for Bangladesh</div>
+        <div class="pub-authors">Sumaiya Janefar, <strong>Prangon Chowdhury</strong>, Rahbaar Yeassin, Mahmudul Hasan, Nahid-Ur-Rahman Chowdhury</div>
+        <div class="pub-venue">Results in Engineering, Elsevier · Vol. 26 <span class="pub-if">IF 7.9</span></div>
+      </div>
+      <div class="pub-actions">
+        <a href="https://doi.org/10.1016/j.rineng.2025.104720" target="_blank" class="pub-btn">DOI ↗</a>
+        <a href="https://doi.org/10.1016/j.rineng.2025.104720" target="_blank" class="pub-btn">PDF ↗</a>
+      </div>
+    </div>
+
+    <div class="pub-card" data-type="journal">
+      <div class="pub-year">2025</div>
+      <div>
+        <span class="pub-type-badge badge-journal">Journal</span>
+        <div class="pub-title">Complementarity in renewable energy sources: Insights from scientometric analysis</div>
+        <div class="pub-authors"><strong>Prangon Chowdhury</strong>, Nahid-Ur-Rahman Chowdhury, Omar Farrok</div>
+        <div class="pub-venue">Energy Conversion and Management: X, Elsevier · Vol. 26 <span class="pub-if">IF 7.6</span></div>
+      </div>
+      <div class="pub-actions">
+        <a href="https://doi.org/10.1016/j.ecmx.2025.100930" target="_blank" class="pub-btn">DOI ↗</a>
+        <a href="https://doi.org/10.1016/j.ecmx.2025.100930" target="_blank" class="pub-btn">PDF ↗</a>
+      </div>
+    </div>
+
+    <div class="pub-card" data-type="journal">
+      <div class="pub-year">2025</div>
+      <div>
+        <span class="pub-type-badge badge-journal">Journal</span>
+        <div class="pub-title">Techno-economic and multicriteria analysis of grid-connected energy systems for hydrogen production: A case study in Bangladesh</div>
+        <div class="pub-authors"><strong>Prangon Chowdhury</strong>, Tasniah Islam, Ephraim Bonah Agyekum</div>
+        <div class="pub-venue">International Journal of Hydrogen Energy, Elsevier · Vol. 109 <span class="pub-if">IF 8.3</span></div>
+      </div>
+      <div class="pub-actions">
+        <a href="https://doi.org/10.1016/j.ijhydene.2025.02.034" target="_blank" class="pub-btn">DOI ↗</a>
+        <a href="https://doi.org/10.1016/j.ijhydene.2025.02.034" target="_blank" class="pub-btn">PDF ↗</a>
+      </div>
+    </div>
+
+    <div class="pub-card" data-type="journal">
+      <div class="pub-year">2025</div>
+      <div>
+        <span class="pub-type-badge badge-journal">Journal</span>
+        <div class="pub-title">Biomass to biofuel: Impacts and mitigation of environmental, health, and socioeconomic challenges</div>
+        <div class="pub-authors"><strong>Prangon Chowdhury</strong>, Nafisa Anjum Mahi, Rahbaar Yeassin, Nahid-Ur-Rahman Chowdhury, Omar Farrok</div>
+        <div class="pub-venue">Energy Conversion and Management: X (Special Issue) · Vol. 25 <span class="pub-if">IF 7.6</span></div>
+      </div>
+      <div class="pub-actions">
+        <a href="https://doi.org/10.1016/j.ecmx.2025.100889" target="_blank" class="pub-btn">DOI ↗</a>
+        <a href="https://doi.org/10.1016/j.ecmx.2025.100889" target="_blank" class="pub-btn">PDF ↗</a>
+      </div>
+    </div>
+
+    <div class="pub-card" data-type="journal">
+      <div class="pub-year">2024</div>
+      <div>
+        <span class="pub-type-badge badge-journal">Journal</span>
+        <div class="pub-title">Impacts of digitalization on smart grids, renewable energy, and demand response: An updated review of current applications</div>
+        <div class="pub-authors">Mou Mahmood, <strong>Prangon Chowdhury</strong>, Rahbaar Yeassin, Mahmudul Hasan, Tanvir Ahmad, Nahid-Ur-Rahman Chowdhury</div>
+        <div class="pub-venue">Energy Conversion and Management: X, Elsevier · Vol. 24 <span class="pub-if">IF 7.6</span></div>
+      </div>
+      <div class="pub-actions">
+        <a href="https://doi.org/10.1016/j.ecmx.2024.100790" target="_blank" class="pub-btn">DOI ↗</a>
+        <a href="https://doi.org/10.1016/j.ecmx.2024.100790" target="_blank" class="pub-btn">PDF ↗</a>
+      </div>
+    </div>
+
+    <div class="pub-card" data-type="journal">
+      <div class="pub-year">2024</div>
+      <div>
+        <span class="pub-type-badge badge-journal">Journal</span>
+        <div class="pub-title">Techno-economic and environmental analysis of hybrid energy systems for remote areas: A sustainable case study in Bangladesh</div>
+        <div class="pub-authors">Md. Fahid Hasan Mojumder, Tasniah Islam, <strong>Prangon Chowdhury</strong>, Mahmudul Hasan, Nusra Akter Takia, Nahid-Ur-Rahman Chowdhury, Omar Farrok</div>
+        <div class="pub-venue">Energy Conversion and Management: X, Elsevier · Vol. 23 <span class="pub-if">IF 7.6</span></div>
+      </div>
+      <div class="pub-actions">
+        <a href="https://doi.org/10.1016/j.ecmx.2024.100664" target="_blank" class="pub-btn">DOI ↗</a>
+        <a href="https://doi.org/10.1016/j.ecmx.2024.100664" target="_blank" class="pub-btn">PDF ↗</a>
+      </div>
+    </div>
+
+    <!-- CONFERENCE — newest first -->
+    <div class="pub-card" data-type="conference">
+      <div class="pub-year">2025</div>
+      <div>
+        <span class="pub-type-badge badge-conference">Conference</span>
+        <div class="pub-title">Optimization of Nonlinear Quadratic Economic Dispatch Problem with Transmission Losses: A Scalable Mathematical Modeling Approach</div>
+        <div class="pub-authors">Mou Mahmood, <strong>Prangon Chowdhury</strong>, Rahbaar Yeassin, Emtiaz Uddin, Md Anas Bin Alam, Nahid-Ur-Rahman Chowdhury</div>
+        <div class="pub-venue">QPAIN 2025, Rangpur, Bangladesh</div>
+      </div>
+      <div class="pub-actions">
+        <a href="https://doi.org/10.1109/QPAIN66474.2025.11171795" target="_blank" class="pub-btn">DOI ↗</a>
+        <a href="https://doi.org/10.1109/QPAIN66474.2025.11171795" target="_blank" class="pub-btn">PDF ↗</a>
+      </div>
+    </div>
+
+    <div class="pub-card" data-type="conference">
+      <div class="pub-year">2024</div>
+      <div>
+        <span class="pub-type-badge badge-conference">Conference</span>
+        <div class="pub-title">Feasibility assessment of an off-grid hybrid energy system for a char area in Bangladesh</div>
+        <div class="pub-authors"><strong>Prangon Chowdhury</strong>, Shamim Forhad, Mohammed Faiyaz Rahman, Israt Jahan Tasmia, Mahmudul Hasan, Nahid-Ur-Rahman Chowdhury</div>
+        <div class="pub-venue">PEEIACON 2024, RUET, Rajshahi, Bangladesh</div>
+      </div>
+      <div class="pub-actions">
+        <a href="https://doi.org/10.1109/PEEIACON63629.2024.10800194" target="_blank" class="pub-btn">DOI ↗</a>
+        <a href="https://doi.org/10.1109/PEEIACON63629.2024.10800194" target="_blank" class="pub-btn">PDF ↗</a>
+      </div>
+    </div>
+
+    <div class="pub-card" data-type="conference">
+      <div class="pub-year">2024</div>
+      <div>
+        <span class="pub-type-badge badge-conference">Conference</span>
+        <div class="pub-title">Techno-economic evaluation of various hybrid energy systems optimization for rural Bangladesh</div>
+        <div class="pub-authors">Md. Fahid Hasan Mojumder, Tasniah Islam, <strong>Prangon Chowdhury</strong>, Nusra Akter Takia, Mahmudul Hasan, Nahid-Ur-Rahman Chowdhury</div>
+        <div class="pub-venue">PEEIACON 2024, RUET, Rajshahi, Bangladesh</div>
+      </div>
+      <div class="pub-actions">
+        <a href="https://doi.org/10.1109/PEEIACON63629.2024.10800667" target="_blank" class="pub-btn">DOI ↗</a>
+        <a href="https://doi.org/10.1109/PEEIACON63629.2024.10800667" target="_blank" class="pub-btn">PDF ↗</a>
+      </div>
+    </div>
+
+    <div class="pub-card" data-type="conference">
+      <div class="pub-year">2024</div>
+      <div>
+        <span class="pub-type-badge badge-conference">Conference</span>
+        <div class="pub-title">Island energy autonomy: A techno-economic assessment of a virtual power plant in Bangladesh</div>
+        <div class="pub-authors"><strong>Prangon Chowdhury</strong>, Rahbaar Yeassin, Israt Jahan Tasmia, Abu M. Fuad, Mahmudul Hasan, Nahid-Ur-Rahman Chowdhury</div>
+        <div class="pub-venue">iCACCESS 2024, Dhaka, Bangladesh</div>
+      </div>
+      <div class="pub-actions">
+        <a href="https://doi.org/10.1109/iCACCESS61735.2024.10499619" target="_blank" class="pub-btn">DOI ↗</a>
+        <a href="https://doi.org/10.1109/iCACCESS61735.2024.10499619" target="_blank" class="pub-btn">PDF ↗</a>
+      </div>
+    </div>
+
+    <!-- THESIS -->
+    <div class="pub-card" data-type="thesis">
+      <div class="pub-year">2026</div>
+      <div>
+        <span class="pub-type-badge badge-thesis">M.Sc. Thesis</span>
+        <div class="pub-title">Design of a Co-Optimized Wireless Power Transfer System for Vehicle-To-Vehicle Applications</div>
+        <div class="pub-authors"><strong>Prangon Chowdhury</strong> · Supervisor: Prof. Omar Farrok</div>
+        <div class="pub-venue">Ahsanullah University of Science and Technology · 2026</div>
+      </div>
+      <div class="pub-actions">
+        <span class="pub-btn disabled">In Progress</span>
+      </div>
+    </div>
+
+    <div class="pub-card" data-type="thesis">
+      <div class="pub-year">2023</div>
+      <div>
+        <span class="pub-type-badge badge-thesis">B.Sc. Thesis</span>
+        <div class="pub-title">Developing Demand Side Management Techniques for Commercial Consumers</div>
+        <div class="pub-authors"><strong>Prangon Chowdhury</strong> · Supervisor: Prof. Tareq Aziz</div>
+        <div class="pub-venue">Ahsanullah University of Science and Technology · 2023</div>
+      </div>
+      <div class="pub-actions">
+        <a href="https://www.researchgate.net" target="_blank" class="pub-btn">Book ↗</a>
+        <a href="https://www.researchgate.net" target="_blank" class="pub-btn">Poster ↗</a>
+      </div>
+    </div>
+
+  </div><!-- /pub-grid -->
+</div>
+</section>
+
+<!-- ══════════ TRAINING ══════════ -->
+<div class="sec-divider"></div>
+<section id="training" style="background:var(--bg2);">
+<div class="section-wrap">
+  <div class="sec-header">
+    <span class="sec-num">03</span>
+    <h2 class="sec-title">Professional Training</h2>
+    <div class="sec-line"></div>
+  </div>
+  <div class="training-card">
+    <div class="tc-title">Professional Solar PV Power Plant Design</div>
+    <div class="tc-org">Ulterior Engineering — Dhaka, Bangladesh</div>
+    <div class="tc-period">March 2025 – May 2025</div>
+    <div class="tc-badge">ISO 21001:2018 Certified · Accredited by National Skill Development Authority, Bangladesh</div>
+    <div class="tc-bullets">
+      <div class="tc-bullet">Trained in designing and conducting feasibility analysis of PV systems through real-world projects.</div>
+      <div class="tc-bullet">Developed proficiency in using advanced tools for system simulation and design.</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ══════════ CONTACT ══════════ -->
+<div class="sec-divider"></div>
+<section id="contact" style="background:var(--bg);">
+<div class="section-wrap">
+  <div class="contact-grid">
+    <div class="contact-intro">
+      <div class="sec-header">
+        <span class="sec-num">04</span>
+        <h2 class="sec-title">Get In Touch</h2>
+      </div>
+      <p>I am open to research collaborations and academic discussions. Feel free to reach out — I try to respond within 48 hours.</p>
+      <div class="social-links">
+        <a href="mailto:prangon.aust@gmail.com" class="social-link">
+          <svg class="sl-icon" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          <div class="sl-info"><div class="sl-label">Email</div><div class="sl-val">prangon.aust@gmail.com</div></div>
+        </a>
+        <a href="https://www.linkedin.com/in/prangonchy-aust/" target="_blank" class="social-link">
+          <svg class="sl-icon" width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+          <div class="sl-info"><div class="sl-label">LinkedIn</div><div class="sl-val">linkedin.com/in/prangonchy-aust</div></div>
+        </a>
+        <a href="https://scholar.google.com/citations?user=YOqfydcAAAAJ&hl=en&oi=ao" target="_blank" class="social-link">
+          <svg class="sl-icon" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 14l9-5-9-5-9 5 9 5z"/><path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/></svg>
+          <div class="sl-info"><div class="sl-label">Google Scholar</div><div class="sl-val">View all publications</div></div>
+        </a>
+        <a href="#" class="social-link" onclick="return false;" style="cursor:default;">
+          <svg class="sl-icon" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+          <div class="sl-info"><div class="sl-label">CV</div><div class="sl-val">Download CV (PDF)</div></div>
+        </a>
+        <div class="social-link" style="cursor:default;">
+          <svg class="sl-icon" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          <div class="sl-info"><div class="sl-label">Location</div><div class="sl-val">Dhaka, Bangladesh</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="contact-form">
+        <div class="form-row">
+          <div class="field">
+            <label>Name</label>
+            <input type="text" placeholder="Your name">
+          </div>
+          <div class="field">
+            <label>Email</label>
+            <input type="email" placeholder="your@email.com">
+          </div>
+        </div>
+        <div class="field">
+          <label>Subject</label>
+          <input type="text" placeholder="Research collaboration, etc.">
+        </div>
+        <div class="field">
+          <label>Message</label>
+          <textarea placeholder="Your message..."></textarea>
+        </div>
+        <button class="send-btn" onclick="alert('Please send your message directly to prangon.aust@gmail.com')">Send Message →</button>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<footer>
+  <span>© 2026 Prangon Chowdhury. All rights reserved.</span>
+  <span>Graduate Research Assistant · EEE · AUST · Dhaka, Bangladesh</span>
+</footer>
+
+<script>
+// ── THEME ──
+function toggleTheme() {
+  const html = document.documentElement;
+  html.dataset.theme = html.dataset.theme === 'dark' ? 'light' : 'dark';
+}
+
+// ── TABS ──
+function switchTab(id, btn) {
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('active');
+  btn.classList.add('active');
+}
+
+// ── PUB FILTER ──
+function filterPubs(type, btn) {
+  document.querySelectorAll('.pf-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.pub-card').forEach(card => {
+    card.style.display = (type === 'all' || card.dataset.type === type) ? 'grid' : 'none';
+  });
+}
+
+// ── NAV HIGHLIGHT ──
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll', () => {
+  let cur = '';
+  sections.forEach(s => { if (window.scrollY >= s.offsetTop - 120) cur = s.id; });
+  navLinks.forEach(a => {
+    a.style.color = a.getAttribute('href') === '#' + cur ? 'var(--accent)' : '';
+  });
+}, { passive: true });
+</script>
+</body>
+</html>
