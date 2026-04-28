@@ -2,544 +2,477 @@
 <html lang="en" data-theme="dark">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <title>Prangon Chowdhury — Portfolio</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=JetBrains+Mono:wght@300;400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 [data-theme="dark"] {
-  --bg:      #0e1117;
-  --bg2:     #141820;
-  --bg3:     #1c2230;
-  --border:  rgba(255,255,255,0.07);
-  --border2: rgba(255,255,255,0.13);
-  --accent:  #e07b39;
-  --accent2: #f4a261;
-  --text:    #edf0f7;
-  --muted:   #5c6375;
-  --muted2:  #9ba3b8;
-  --card-bg: #141820;
-  --nav-bg:  rgba(14,17,23,0.92);
-  --badge-j: rgba(224,123,57,0.15);
-  --badge-jt:#e07b39;
-  --badge-c: rgba(244,162,97,0.15);
-  --badge-ct:#f4a261;
-  --green:   #56cfb2;
-  --shadow:  0 8px 32px rgba(0,0,0,0.45);
+  --bg:        #0e1117;
+  --bg2:       #141820;
+  --bg3:       #1c2230;
+  --border:    rgba(255,255,255,0.07);
+  --border2:   rgba(255,255,255,0.13);
+  --accent:    #e07b39;
+  --accent2:   #f4a261;
+  --text:      #edf0f7;
+  --muted:     #5c6375;
+  --muted2:    #9ba3b8;
+  --card-bg:   #141820;
+  --nav-bg:    rgba(14,17,23,0.9);
+  --badge-j:   rgba(224,123,57,0.14);
+  --badge-jt:  #e07b39;
+  --badge-c:   rgba(244,162,97,0.14);
+  --badge-ct:  #f4a261;
+  --green:     #56cfb2;
+  --shadow:    0 8px 32px rgba(0,0,0,0.45);
   --toggle-bg: #1c2230;
 }
 [data-theme="light"] {
-  --bg:      #faf7f2;
-  --bg2:     #f3ede4;
-  --bg3:     #ede4d8;
-  --border:  rgba(180,150,110,0.18);
-  --border2: rgba(180,150,110,0.3);
-  --accent:  #c96a2b;
-  --accent2: #e08040;
-  --text:    #1a1410;
-  --muted:   #a08060;
-  --muted2:  #5a4535;
-  --card-bg: #faf7f2;
-  --nav-bg:  rgba(250,247,242,0.96);
-  --badge-j: rgba(201,106,43,0.12);
-  --badge-jt:#c96a2b;
-  --badge-c: rgba(224,128,64,0.12);
-  --badge-ct:#c96a2b;
-  --green:   #2a8a6a;
-  --shadow:  0 8px 32px rgba(120,80,40,0.10);
+  --bg:        #faf7f2;
+  --bg2:       #f3ede4;
+  --bg3:       #ede4d8;
+  --border:    rgba(180,150,110,0.18);
+  --border2:   rgba(180,150,110,0.3);
+  --accent:    #c96a2b;
+  --accent2:   #e08040;
+  --text:      #1a1410;
+  --muted:     #a08060;
+  --muted2:    #5a4535;
+  --card-bg:   #faf7f2;
+  --nav-bg:    rgba(250,247,242,0.93);
+  --badge-j:   rgba(201,106,43,0.11);
+  --badge-jt:  #c96a2b;
+  --badge-c:   rgba(224,128,64,0.11);
+  --badge-ct:  #c96a2b;
+  --green:     #2a8a6a;
+  --shadow:    0 8px 32px rgba(120,80,40,0.10);
   --toggle-bg: #ede4d8;
 }
 
 html { scroll-behavior: smooth; }
 body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: 'Outfit', sans-serif;
-  font-weight: 300;
-  overflow-x: hidden;
-  line-height: 1.6;
+  background: var(--bg); color: var(--text);
+  font-family: 'Outfit', sans-serif; font-weight: 300;
+  overflow-x: hidden; line-height: 1.6;
   transition: background 0.3s, color 0.3s;
 }
 ::-webkit-scrollbar { width: 3px; }
 ::-webkit-scrollbar-track { background: var(--bg); }
 ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
 
-/* ─── THEME TOGGLE ─── */
+/* ══════ THEME TOGGLE ══════ */
 .theme-toggle {
-  position: fixed;
-  top: 50%;
-  right: 1.4rem;
-  transform: translateY(-50%);
-  z-index: 300;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
+  position: fixed; top: 50%; right: 1.2rem;
+  transform: translateY(-50%); z-index: 300;
 }
 .toggle-track {
-  width: 36px;
-  height: 70px;
-  background: var(--toggle-bg);
-  border: 1px solid var(--border2);
-  border-radius: 20px;
-  cursor: pointer;
-  position: relative;
-  transition: background 0.3s;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  padding: 5px;
+  width: 34px; height: 66px;
+  background: var(--toggle-bg); border: 1px solid var(--border2);
+  border-radius: 20px; cursor: pointer; position: relative;
+  display: flex; flex-direction: column; align-items: center;
+  justify-content: space-between; padding: 5px; transition: background 0.3s;
+  user-select: none;
 }
-.toggle-icon { font-size: 0.85rem; line-height: 1; user-select: none; }
+.toggle-icon { font-size: 0.78rem; line-height: 1; }
 .toggle-thumb {
-  position: absolute;
-  width: 26px; height: 26px;
-  background: var(--accent);
-  border-radius: 50%;
-  top: 4px;
-  transition: top 0.35s cubic-bezier(0.4,0,0.2,1), background 0.3s;
+  position: absolute; width: 24px; height: 24px;
+  background: var(--accent); border-radius: 50%;
+  top: 4px; transition: top 0.35s cubic-bezier(.4,0,.2,1), background 0.3s;
 }
-[data-theme="light"] .toggle-thumb { top: calc(100% - 30px); }
+[data-theme="light"] .toggle-thumb { top: calc(100% - 28px); }
 
-/* ─── BACK TO TOP ─── */
-.back-to-top {
-  position: fixed;
-  bottom: 2rem;
-  right: 1.4rem;
-  z-index: 299;
-  width: 42px; height: 42px;
-  background: var(--accent);
-  color: #fff;
-  border: none;
-  border-radius: 50%;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  transform: translateY(12px);
-  transition: opacity 0.3s, transform 0.3s, background 0.2s;
-  pointer-events: none;
+/* ══════ GO-TO-TOP ══════ */
+.go-top {
+  position: fixed; bottom: 2rem; right: 1.2rem; z-index: 300;
+  width: 40px; height: 40px;
+  background: var(--accent); color: #fff;
+  border: none; border-radius: 50%; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.3s, transform 0.2s, background 0.2s;
   box-shadow: 0 4px 16px rgba(0,0,0,0.3);
 }
-.back-to-top.visible {
-  opacity: 1;
-  transform: translateY(0);
-  pointer-events: auto;
-}
-.back-to-top:hover { background: var(--accent2); }
+.go-top.visible { opacity: 1; pointer-events: all; }
+.go-top:hover { background: var(--accent2); transform: translateY(-2px); }
+.go-top svg { flex-shrink: 0; }
 
-/* ─── NAV ─── */
+/* ══════ NAV ══════ */
 nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 200;
   display: flex; align-items: center; justify-content: space-between;
-  padding: 1rem 3rem;
-  background: var(--nav-bg);
-  backdrop-filter: blur(18px);
+  padding: 1rem 2.5rem;
+  background: var(--nav-bg); backdrop-filter: blur(18px);
   border-bottom: 1px solid var(--border);
-  transition: background 0.3s;
+  transition: background 0.3s, padding 0.3s;
 }
 .nav-logo {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.1rem; font-weight: 700;
-  color: var(--text); text-decoration: none; letter-spacing: 0.01em;
+  font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 700;
+  color: var(--text); text-decoration: none;
 }
 .nav-logo span { color: var(--accent); }
-.nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+.nav-links { display: flex; gap: 1.8rem; list-style: none; align-items: center; }
 .nav-links a {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.67rem; letter-spacing: 0.14em; text-transform: uppercase;
+  font-size: 0.65rem; letter-spacing: 0.14em; text-transform: uppercase;
   color: var(--muted2); text-decoration: none; transition: color 0.2s;
 }
 .nav-links a:hover { color: var(--accent); }
-
 /* hamburger */
-.hamburger {
-  display: none;
-  flex-direction: column;
-  gap: 5px;
-  cursor: pointer;
-  padding: 4px;
-  background: none;
-  border: none;
+.nav-hamburger {
+  display: none; flex-direction: column; gap: 5px;
+  cursor: pointer; padding: 4px; background: none; border: none;
 }
-.hamburger span {
-  display: block;
-  width: 24px; height: 2px;
-  background: var(--text);
-  border-radius: 2px;
-  transition: all 0.3s;
+.nav-hamburger span {
+  display: block; width: 22px; height: 2px;
+  background: var(--text); border-radius: 2px; transition: all 0.3s;
 }
-.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-.hamburger.open span:nth-child(2) { opacity: 0; }
-.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+.nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+.nav-mobile {
+  display: none; position: fixed; top: 56px; left: 0; right: 0;
+  background: var(--nav-bg); backdrop-filter: blur(18px);
+  border-bottom: 1px solid var(--border); z-index: 199;
+  flex-direction: column; padding: 1rem 2rem 1.5rem;
+  gap: 1.2rem;
+}
+.nav-mobile.open { display: flex; }
+.nav-mobile a {
+  font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--muted2); text-decoration: none; padding: 0.4rem 0; border-bottom: 1px solid var(--border);
+}
+.nav-mobile a:hover { color: var(--accent); }
 
-/* ─── HERO ─── */
+/* ══════ HERO ══════ */
 #home {
-  min-height: 100vh;
-  display: flex; align-items: center;
-  padding: 6rem 3rem 4rem;
-  max-width: 1160px; margin: 0 auto;
-  gap: 5rem;
+  min-height: 100vh; display: flex; align-items: center;
+  padding: 7rem 2.5rem 5rem; max-width: 1160px; margin: 0 auto; gap: 4rem;
 }
 .hero-left { flex: 1; min-width: 0; }
 .hero-tag {
   display: inline-flex; align-items: center; gap: 0.6rem;
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.67rem; letter-spacing: 0.18em; text-transform: uppercase;
-  color: var(--accent); margin-bottom: 1.4rem;
-  padding: 0.35rem 1rem;
-  border: 1px solid rgba(224,123,57,0.3);
-  border-radius: 100px;
-  background: var(--badge-j);
+  font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 1.3rem;
+  padding: 0.32rem 0.9rem; border: 1px solid rgba(224,123,57,0.3);
+  border-radius: 100px; background: var(--badge-j);
 }
-.hero-tag::before { content: '●'; font-size: 0.45rem; animation: blink 2s infinite; }
+.hero-tag::before { content: '●'; font-size: 0.42rem; animation: blink 2s infinite; }
 @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.25} }
 
 h1.hero-name {
   font-family: 'Playfair Display', serif;
-  font-size: clamp(2.8rem, 5vw, 4.4rem);
-  font-weight: 700; line-height: 1.08;
-  margin-bottom: 0.4rem; color: var(--text);
+  font-size: clamp(2.5rem, 5vw, 4.3rem); font-weight: 700; line-height: 1.08;
+  margin-bottom: 0.35rem; color: var(--text);
 }
 h1.hero-name em { color: var(--accent); font-style: italic; }
-.hero-discipline {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase;
+.hero-field {
+  font-family: 'JetBrains Mono', monospace; font-size: 0.72rem;
+  letter-spacing: 0.14em; text-transform: uppercase;
   color: var(--accent); margin-bottom: 0.6rem;
 }
-.hero-tagline {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.07rem; font-style: italic;
-  color: var(--muted2); margin-bottom: 0.5rem;
-  line-height: 1.6; max-width: 520px;
+.hero-role {
+  font-family: 'Playfair Display', serif; font-size: 1.05rem;
+  font-style: italic; color: var(--muted2); margin-bottom: 0.22rem;
 }
 .hero-inst {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.67rem; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1.8rem;
+  font-family: 'JetBrains Mono', monospace; font-size: 0.64rem;
+  color: var(--muted); letter-spacing: 0.09em; text-transform: uppercase; margin-bottom: 1.6rem;
 }
-.hero-links { display: flex; gap: 0.8rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
+.hero-bio {
+  font-size: 1.02rem; line-height: 1.85; color: var(--muted2);
+  max-width: 530px; margin-bottom: 1rem;
+}
+.hero-bio strong { color: var(--text); font-weight: 500; }
+.hero-ubc {
+  font-size: 0.9rem; line-height: 1.82; color: var(--muted2);
+  max-width: 530px; margin-bottom: 2.2rem;
+  padding: 0.85rem 1.15rem;
+  border-left: 2.5px solid var(--accent);
+  background: var(--badge-j); border-radius: 0 4px 4px 0;
+}
+.hero-ubc strong { color: var(--text); font-weight: 500; }
+.hero-links { display: flex; gap: 0.75rem; flex-wrap: wrap; }
 .hero-link {
-  display: inline-flex; align-items: center; gap: 0.45rem;
-  font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase;
-  padding: 0.6rem 1.3rem; text-decoration: none; border-radius: 3px; transition: all 0.22s;
+  display: inline-flex; align-items: center; gap: 0.42rem;
+  font-family: 'JetBrains Mono', monospace; font-size: 0.63rem; letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 0.58rem 1.2rem; text-decoration: none; border-radius: 3px; transition: all 0.22s;
 }
 .hl-primary { background: var(--accent); color: #fff; }
 .hl-primary:hover { background: var(--accent2); }
 .hl-ghost { border: 1px solid var(--border2); color: var(--muted2); }
 .hl-ghost:hover { border-color: var(--accent); color: var(--accent); }
 
-/* ─── PHOTO ─── */
+/* ── photo ── */
 .hero-right { flex-shrink: 0; }
-.photo-container { position: relative; width: 290px; }
+.photo-container { position: relative; width: 280px; }
 .photo-label {
-  font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase;
-  color: var(--muted); text-align: center; margin-bottom: 0.7rem;
+  font-family: 'JetBrains Mono', monospace; font-size: 0.58rem; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--muted); text-align: center; margin-bottom: 0.6rem;
 }
 .photo-wrap {
-  width: 290px; height: 350px;
-  border: 1.5px solid var(--border2);
-  border-radius: 4px; overflow: hidden;
-  position: relative; background: var(--bg3);
-  transition: border-color 0.3s;
+  width: 280px; height: 340px;
+  border: 1.5px solid var(--border2); border-radius: 4px; overflow: hidden;
+  position: relative; background: var(--bg3); transition: border-color 0.3s;
 }
-.photo-wrap:hover { border-color: var(--accent); }
 .photo-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
-.photo-corner {
-  position: absolute; width: 18px; height: 18px;
-  border-color: var(--accent); border-style: solid; opacity: 0.7;
-}
-.pc-tl { top: 0; left: 0; border-width: 2px 0 0 2px; }
-.pc-tr { top: 0; right: 0; border-width: 2px 2px 0 0; }
-.pc-bl { bottom: 0; left: 0; border-width: 0 0 2px 2px; }
-.pc-br { bottom: 0; right: 0; border-width: 0 2px 2px 0; }
+.photo-corner { position: absolute; width: 16px; height: 16px; border-color: var(--accent); border-style: solid; opacity: 0.65; }
+.pc-tl { top:0;left:0;border-width:2px 0 0 2px; }
+.pc-tr { top:0;right:0;border-width:2px 2px 0 0; }
+.pc-bl { bottom:0;left:0;border-width:0 0 2px 2px; }
+.pc-br { bottom:0;right:0;border-width:0 2px 2px 0; }
 .photo-badge {
-  position: absolute; bottom: -14px; right: -14px;
+  position: absolute; bottom: -13px; right: -13px;
   background: var(--accent); color: #fff;
-  padding: 0.75rem 1rem; text-align: center; border-radius: 3px;
+  padding: 0.7rem 0.95rem; text-align: center; border-radius: 3px;
 }
-.pb-num { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; line-height: 1; }
-.pb-txt { font-family: 'JetBrains Mono', monospace; font-size: 0.52rem; letter-spacing: 0.1em; text-transform: uppercase; margin-top: 0.2rem; }
+.pb-num { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; line-height: 1; }
+.pb-txt { font-family: 'JetBrains Mono', monospace; font-size: 0.5rem; letter-spacing: 0.1em; text-transform: uppercase; margin-top: 0.18rem; }
 
-/* ─── DIVIDER / SECTION ─── */
+/* ══════ SECTIONS ══════ */
 .sec-divider { width: 100%; max-width: 1100px; margin: 0 auto; height: 1px; background: var(--border); }
-.section-wrap { max-width: 1100px; margin: 0 auto; padding: 6rem 3rem; }
-.sec-header { display: flex; align-items: baseline; gap: 1.2rem; margin-bottom: 3rem; }
-.sec-title { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3vw, 2.4rem); font-weight: 600; }
+.section-wrap { max-width: 1100px; margin: 0 auto; padding: 5.5rem 2.5rem; }
+.sec-header { display: flex; align-items: baseline; gap: 1.2rem; margin-bottom: 2.8rem; }
+.sec-title { font-family: 'Playfair Display', serif; font-size: clamp(1.7rem, 3vw, 2.3rem); font-weight: 600; }
 .sec-line { flex: 1; height: 1px; background: var(--border); margin-bottom: 4px; }
 
-/* ─── ABOUT ─── */
-#about { background: var(--bg2); }
-.about-grid { display: grid; grid-template-columns: 1.35fr 1fr; gap: 5rem; align-items: start; }
-.about-text p { font-size: 0.94rem; line-height: 1.9; color: var(--muted2); margin-bottom: 1rem; }
+/* ══════ ABOUT ══════ */
+.about-grid { display: grid; grid-template-columns: 1.35fr 1fr; gap: 4.5rem; align-items: start; }
+.about-text p { font-size: 0.93rem; line-height: 1.9; color: var(--muted2); margin-bottom: 1rem; }
 .about-text p strong { color: var(--text); font-weight: 500; }
-
-.tabs-header { display: flex; border-bottom: 1px solid var(--border); margin: 2rem 0 1.5rem; flex-wrap: wrap; }
+.tabs-header { display: flex; border-bottom: 1px solid var(--border); margin: 1.8rem 0 1.4rem; }
 .tab-btn {
-  font-family: 'JetBrains Mono', monospace; font-size: 0.63rem; letter-spacing: 0.12em; text-transform: uppercase;
-  padding: 0.55rem 1.1rem; color: var(--muted); cursor: pointer;
+  font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase;
+  padding: 0.5rem 1rem; color: var(--muted); cursor: pointer;
   border: none; border-bottom: 2px solid transparent; background: none; transition: all 0.2s;
 }
 .tab-btn.active { color: var(--accent); border-bottom-color: var(--accent); }
 .tab-content { display: none; }
 .tab-content.active { display: block; }
 
-.edu-item { padding: 1rem 0; border-bottom: 1px solid var(--border); display: flex; gap: 1.2rem; align-items: flex-start; }
-.edu-logo { flex-shrink: 0; width: 44px; height: 44px; border-radius: 4px; background: var(--bg3); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; overflow: hidden; }
-.edu-logo img { width: 36px; height: 36px; object-fit: contain; }
-.edu-body {}
-.edu-degree { font-family: 'Playfair Display', serif; font-size: 0.97rem; font-weight: 600; color: var(--text); margin-bottom: 0.2rem; }
-.edu-school { font-size: 0.83rem; color: var(--muted2); margin-bottom: 0.1rem; }
-.edu-addr { font-size: 0.75rem; color: var(--muted); margin-bottom: 0.15rem; font-style: italic; }
-.edu-year { font-family: 'JetBrains Mono', monospace; font-size: 0.63rem; color: var(--accent); letter-spacing: 0.07em; }
+/* edu card with logo */
+.edu-item {
+  padding: 1rem 0; border-bottom: 1px solid var(--border);
+  display: flex; align-items: flex-start; gap: 1rem;
+}
+.edu-logo {
+  width: 44px; height: 44px; object-fit: contain; flex-shrink: 0;
+  margin-top: 3px; opacity: 0.9; filter: var(--logo-filter, none);
+  border-radius: 4px; background: white; padding: 4px;
+}
+[data-theme="dark"] .edu-logo { background: rgba(255,255,255,0.08); }
+.edu-text {}
+.edu-degree { font-family: 'Playfair Display', serif; font-size: 0.96rem; font-weight: 600; color: var(--text); margin-bottom: 0.15rem; }
+.edu-school { font-size: 0.82rem; color: var(--muted2); margin-bottom: 0.1rem; }
+.edu-addr { font-size: 0.76rem; color: var(--muted); line-height: 1.5; margin-bottom: 0.15rem; }
+.edu-year { font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; color: var(--accent); letter-spacing: 0.07em; }
 
 .exp-item { padding: 0.85rem 0; border-bottom: 1px solid var(--border); }
-.exp-title { font-family: 'Playfair Display', serif; font-size: 0.97rem; font-weight: 600; color: var(--text); }
-.exp-org { font-size: 0.83rem; color: var(--accent); margin: 0.18rem 0; }
-.exp-period { font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; color: var(--muted); letter-spacing: 0.07em; margin-bottom: 0.3rem; }
-.exp-detail { font-size: 0.82rem; color: var(--muted2); line-height: 1.6; }
+.exp-title { font-family: 'Playfair Display', serif; font-size: 0.95rem; font-weight: 600; color: var(--text); }
+.exp-org { font-size: 0.82rem; color: var(--accent); margin: 0.18rem 0; }
+.exp-period { font-family: 'JetBrains Mono', monospace; font-size: 0.61rem; color: var(--muted); letter-spacing: 0.07em; margin-bottom: 0.28rem; }
+.exp-detail { font-size: 0.81rem; color: var(--muted2); line-height: 1.6; }
 .interest-cloud { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1rem; }
 .itag { display: flex; align-items: center; gap: 0.4rem; font-size: 0.88rem; color: var(--muted2); }
 
 .skills-panel {}
-.skill-group { margin-bottom: 1.6rem; }
-.skill-group-label { font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.75rem; }
-.skill-cloud { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+.skill-group { margin-bottom: 1.5rem; }
+.skill-group-label { font-family: 'JetBrains Mono', monospace; font-size: 0.59rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.7rem; }
+.skill-cloud { display: flex; flex-wrap: wrap; gap: 0.42rem; }
 .stag {
-  font-family: 'JetBrains Mono', monospace; font-size: 0.63rem; letter-spacing: 0.05em;
-  padding: 0.28rem 0.75rem; border: 1px solid var(--border2); color: var(--muted2);
+  font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; letter-spacing: 0.04em;
+  padding: 0.27rem 0.72rem; border: 1px solid var(--border2); color: var(--muted2);
   border-radius: 100px; transition: all 0.2s; cursor: default;
 }
 .stag:hover { border-color: var(--accent); color: var(--accent); background: var(--badge-j); }
 
-/* ─── PUBLICATIONS ─── */
-#publications { background: var(--bg); }
-.pub-filters { display: flex; gap: 0.55rem; margin-bottom: 2.2rem; flex-wrap: wrap; }
+/* ══════ PUBLICATIONS ══════ */
+.pub-filters { display: flex; gap: 0.5rem; margin-bottom: 2rem; flex-wrap: wrap; }
 .pf-btn {
   font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase;
-  padding: 0.38rem 1rem; border: 1px solid var(--border2); color: var(--muted2); cursor: pointer;
+  padding: 0.36rem 0.95rem; border: 1px solid var(--border2); color: var(--muted2); cursor: pointer;
   background: none; border-radius: 2px; transition: all 0.2s;
 }
 .pf-btn.active, .pf-btn:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
-
-.pub-grid { display: flex; flex-direction: column; gap: 0.9rem; }
+.pub-grid { display: flex; flex-direction: column; gap: 0.85rem; }
 .pub-card {
-  background: var(--card-bg);
-  border: 1px solid var(--border);
-  padding: 1.4rem 1.8rem;
-  display: grid;
-  grid-template-columns: 64px 1fr auto;
-  gap: 1.4rem;
-  align-items: start;
+  background: var(--card-bg); border: 1px solid var(--border);
+  padding: 1.3rem 1.6rem;
+  display: grid; grid-template-columns: 58px 1fr auto;
+  gap: 1.2rem; align-items: start;
   transition: border-color 0.22s, transform 0.2s;
 }
 .pub-card:hover { border-color: var(--accent); transform: translateX(4px); box-shadow: var(--shadow); }
-.pub-year { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; color: var(--muted); letter-spacing: 0.05em; padding-top: 3px; text-align: right; }
+.pub-year { font-family: 'JetBrains Mono', monospace; font-size: 0.63rem; color: var(--muted); padding-top: 3px; text-align: right; }
 .pub-type-badge {
-  display: inline-block;
-  font-family: 'JetBrains Mono', monospace; font-size: 0.56rem; letter-spacing: 0.12em; text-transform: uppercase;
-  padding: 0.16rem 0.6rem; border-radius: 100px; margin-bottom: 0.45rem;
+  display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 0.55rem;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  padding: 0.15rem 0.55rem; border-radius: 100px; margin-bottom: 0.42rem;
 }
-.badge-journal { background: var(--badge-j); color: var(--badge-jt); }
-.badge-conference { background: var(--badge-c); color: var(--badge-ct); }
-.badge-thesis { background: rgba(86,207,178,0.12); color: var(--green); }
-.pub-title { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 600; line-height: 1.33; margin-bottom: 0.38rem; color: var(--text); }
-.pub-authors { font-size: 0.8rem; color: var(--muted2); margin-bottom: 0.32rem; line-height: 1.5; }
+.badge-journal    { background: var(--badge-j);              color: var(--badge-jt); }
+.badge-conference { background: var(--badge-c);              color: var(--badge-ct); }
+.badge-thesis     { background: rgba(86,207,178,0.12);       color: var(--green); }
+.pub-title { font-family: 'Playfair Display', serif; font-size: 0.99rem; font-weight: 600; line-height: 1.32; margin-bottom: 0.36rem; color: var(--text); }
+.pub-authors { font-size: 0.79rem; color: var(--muted2); margin-bottom: 0.3rem; line-height: 1.5; }
 .pub-authors strong { color: var(--accent); font-weight: 500; }
-.pub-venue { font-size: 0.8rem; font-style: italic; color: var(--muted); }
+.pub-venue { font-size: 0.79rem; font-style: italic; color: var(--muted); line-height: 1.5; }
 .pub-if {
-  display: inline-flex; align-items: center; gap: 0.25rem;
-  font-family: 'JetBrains Mono', monospace; font-size: 0.56rem;
-  padding: 0.13rem 0.5rem; background: rgba(86,207,178,0.12); color: var(--green);
-  border-radius: 100px; margin-left: 0.4rem; vertical-align: middle; white-space: nowrap;
+  display: inline-flex; align-items: center;
+  font-family: 'JetBrains Mono', monospace; font-size: 0.55rem;
+  padding: 0.12rem 0.48rem; background: rgba(86,207,178,0.12); color: var(--green);
+  border-radius: 100px; margin-left: 0.38rem; vertical-align: middle; white-space: nowrap;
 }
-.pub-actions { display: flex; flex-direction: column; gap: 0.4rem; }
+.pub-actions { display: flex; flex-direction: column; gap: 0.38rem; min-width: 64px; }
 .pub-btn {
-  font-family: 'JetBrains Mono', monospace; font-size: 0.58rem; color: var(--accent);
-  text-decoration: none; padding: 0.35rem 0.75rem;
+  font-family: 'JetBrains Mono', monospace; font-size: 0.57rem; color: var(--accent);
+  text-decoration: none; padding: 0.33rem 0.7rem;
   border: 1px solid rgba(224,123,57,0.3); border-radius: 2px;
   white-space: nowrap; transition: all 0.2s; display: inline-block; text-align: center;
 }
 .pub-btn:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
 .pub-btn.disabled { opacity: 0.4; cursor: default; pointer-events: none; }
 
-/* ─── TRAINING ─── */
-#training { background: var(--bg2); }
+/* ══════ TRAINING ══════ */
 .training-card {
-  background: var(--bg3);
-  border: 1px solid var(--border);
-  border-left: 3px solid var(--accent);
-  padding: 2rem;
+  background: var(--bg3); border: 1px solid var(--border);
+  border-left: 3px solid var(--accent); padding: 2rem;
 }
-.tc-title { font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 600; color: var(--text); margin-bottom: 0.25rem; }
-.tc-org { font-size: 0.85rem; color: var(--accent); margin-bottom: 0.18rem; }
-.tc-period { font-family: 'JetBrains Mono', monospace; font-size: 0.63rem; color: var(--muted); letter-spacing: 0.07em; margin-bottom: 0.6rem; }
-.tc-badge {
-  display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 0.58rem;
-  padding: 0.18rem 0.6rem; background: rgba(244,162,97,0.12); color: var(--accent2);
-  border-radius: 100px; margin-bottom: 1rem; letter-spacing: 0.05em;
-}
-.tc-bullets { display: flex; flex-direction: column; gap: 0.4rem; }
-.tc-bullet { font-size: 0.85rem; color: var(--muted2); padding-left: 1.1rem; position: relative; line-height: 1.6; }
-.tc-bullet::before { content: '▸'; position: absolute; left: 0; color: var(--accent); font-size: 0.68rem; top: 4px; }
+.tc-title { font-family: 'Playfair Display', serif; font-size: 1.12rem; font-weight: 600; color: var(--text); margin-bottom: 0.25rem; }
+.tc-org { font-size: 0.84rem; color: var(--accent); margin-bottom: 0.18rem; }
+.tc-period { font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; color: var(--muted); letter-spacing: 0.07em; margin-bottom: 0.55rem; }
+.tc-badge { display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 0.58rem; padding: 0.18rem 0.6rem; background: rgba(244,162,97,0.12); color: var(--accent2); border-radius: 100px; margin-bottom: 0.95rem; }
+.tc-bullet { font-size: 0.84rem; color: var(--muted2); padding-left: 1.1rem; position: relative; line-height: 1.6; margin-bottom: 0.35rem; }
+.tc-bullet::before { content: '▸'; position: absolute; left: 0; color: var(--accent); font-size: 0.67rem; top: 4px; }
 
-/* ─── CONTACT ─── */
-#contact { background: var(--bg); }
-.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
-.contact-intro p { font-size: 0.95rem; line-height: 1.9; color: var(--muted2); margin-bottom: 2rem; }
-.social-links { display: flex; flex-direction: column; gap: 0.9rem; }
+/* ══════ CONTACT ══════ */
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4.5rem; align-items: start; }
+.contact-intro p { font-size: 0.94rem; line-height: 1.9; color: var(--muted2); margin-bottom: 1.8rem; }
+.social-links { display: flex; flex-direction: column; gap: 0.8rem; }
 .social-link {
-  display: flex; align-items: center; gap: 1rem;
-  padding: 0.9rem 1.2rem;
-  background: var(--bg2); border: 1px solid var(--border);
+  display: flex; align-items: center; gap: 0.9rem;
+  padding: 0.85rem 1.1rem; background: var(--bg2); border: 1px solid var(--border);
   text-decoration: none; color: var(--muted2); transition: all 0.22s; border-radius: 3px;
 }
 .social-link:hover { border-color: var(--accent); color: var(--text); }
 .social-link:hover .sl-icon { color: var(--accent); }
 .sl-icon { color: var(--muted); transition: color 0.2s; flex-shrink: 0; }
 .sl-info { flex: 1; }
-.sl-label { font-family: 'JetBrains Mono', monospace; font-size: 0.58rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.18rem; }
-.sl-val { font-size: 0.87rem; }
-
-.contact-form { display: flex; flex-direction: column; gap: 0.9rem; }
-.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem; }
-.field { display: flex; flex-direction: column; gap: 0.38rem; }
-.field label { font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+.sl-label { font-family: 'JetBrains Mono', monospace; font-size: 0.57rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.16rem; }
+.sl-val { font-size: 0.85rem; }
+.contact-form { display: flex; flex-direction: column; gap: 0.85rem; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.85rem; }
+.field { display: flex; flex-direction: column; gap: 0.36rem; }
+.field label { font-family: 'JetBrains Mono', monospace; font-size: 0.59rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
 .field input, .field textarea {
   background: var(--bg2); border: 1px solid var(--border2);
-  padding: 0.75rem 1rem; font-family: 'Outfit', sans-serif; font-size: 0.88rem;
+  padding: 0.72rem 0.95rem; font-family: 'Outfit', sans-serif; font-size: 0.88rem;
   color: var(--text); outline: none; transition: border-color 0.2s; resize: none; border-radius: 3px;
 }
 .field input:focus, .field textarea:focus { border-color: var(--accent); }
-.field textarea { min-height: 120px; }
+.field textarea { min-height: 115px; }
 .send-btn {
-  font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase;
-  padding: 0.82rem 2rem; background: var(--accent); color: #fff; border: none;
-  cursor: pointer; transition: all 0.22s; border-radius: 3px;
+  font-family: 'JetBrains Mono', monospace; font-size: 0.67rem; letter-spacing: 0.12em; text-transform: uppercase;
+  padding: 0.8rem 1.8rem; background: var(--accent); color: #fff; border: none;
+  cursor: pointer; transition: all 0.22s; border-radius: 3px; display: flex; align-items: center; gap: 0.5rem;
 }
 .send-btn:hover { background: var(--accent2); }
 .send-btn:disabled { opacity: 0.6; cursor: not-allowed; }
-.form-status { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; color: var(--green); display: none; padding: 0.5rem 0; }
+.form-status { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; padding: 0.6rem 0.9rem; border-radius: 3px; display: none; }
+.form-status.success { background: rgba(86,207,178,0.12); color: var(--green); border: 1px solid rgba(86,207,178,0.3); display: block; }
+.form-status.error { background: rgba(224,80,80,0.1); color: #e05050; border: 1px solid rgba(224,80,80,0.25); display: block; }
 
-/* ─── FOOTER ─── */
+/* ══════ FOOTER ══════ */
 footer {
   border-top: 1px solid var(--border);
-  padding: 1.8rem 3rem;
+  padding: 1.8rem 2.5rem;
   display: flex; justify-content: space-between; align-items: center;
-  font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; color: var(--muted); letter-spacing: 0.06em;
+  font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; color: var(--muted);
   max-width: 1100px; margin: 0 auto;
 }
 
-/* ─── ANIMATIONS ─── */
-@keyframes fadeUp { from { opacity:0; transform:translateY(18px); } to { opacity:1; transform:translateY(0); } }
-.hero-left > * { animation: fadeUp 0.55s ease both; }
-.hero-tag    { animation-delay: 0.05s; }
-h1.hero-name { animation-delay: 0.14s; }
-.hero-discipline { animation-delay: 0.19s; }
-.hero-tagline { animation-delay: 0.23s; }
-.hero-inst   { animation-delay: 0.28s; }
-.hero-links  { animation-delay: 0.36s; }
-.hero-right  { animation: fadeUp 0.75s 0.25s ease both; }
+/* ══════ ANIMATIONS ══════ */
+@keyframes fadeUp { from{opacity:0;transform:translateY(18px)} to{opacity:1;transform:translateY(0)} }
+.hero-left>*{animation:fadeUp .55s ease both}
+.hero-tag   {animation-delay:.05s}
+h1.hero-name{animation-delay:.13s}
+.hero-field {animation-delay:.18s}
+.hero-role  {animation-delay:.22s}
+.hero-inst  {animation-delay:.27s}
+.hero-bio   {animation-delay:.32s}
+.hero-ubc   {animation-delay:.37s}
+.hero-links {animation-delay:.43s}
+.hero-right {animation:fadeUp .75s .25s ease both}
 
-/* ─── MOBILE NAV OVERLAY ─── */
-.mobile-nav {
-  display: none;
-  position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: var(--bg2);
-  z-index: 190;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 2rem;
-}
-.mobile-nav.open { display: flex; }
-.mobile-nav a {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.6rem; font-weight: 600;
-  color: var(--text); text-decoration: none;
-  transition: color 0.2s;
-}
-.mobile-nav a:hover { color: var(--accent); }
-
-/* ─── RESPONSIVE ─── */
-@media (max-width: 900px) {
-  nav { padding: 1rem 1.5rem; }
+/* ══════ RESPONSIVE ══════ */
+@media (max-width: 768px) {
+  /* nav */
+  nav { padding: 0.85rem 1.2rem; }
   .nav-links { display: none; }
-  .hamburger { display: flex; }
-  .theme-toggle { display: none; }
+  .nav-hamburger { display: flex; }
 
+  /* theme toggle — move to bottom left on mobile */
+  .theme-toggle { top: auto; bottom: 5.5rem; right: 1rem; transform: none; }
+  .go-top { bottom: 1.5rem; right: 1rem; }
+
+  /* hero */
   #home {
-    flex-direction: column-reverse;
-    align-items: center;
-    gap: 2.5rem;
-    padding: 6rem 1.5rem 3rem;
-    text-align: center;
+    flex-direction: column; align-items: flex-start;
+    padding: 6.5rem 1.2rem 3.5rem; gap: 2.5rem; min-height: auto;
   }
-  .hero-left { display: flex; flex-direction: column; align-items: center; }
-  h1.hero-name { font-size: clamp(2.2rem, 8vw, 3.2rem); }
-  .hero-tagline { text-align: center; }
-  .hero-links { justify-content: center; }
-  .photo-container { width: 220px; }
-  .photo-wrap { width: 220px; height: 270px; }
+  h1.hero-name { font-size: clamp(2.1rem, 8vw, 3rem); }
+  .hero-bio, .hero-ubc { max-width: 100%; }
+  .hero-right { width: 100%; display: flex; justify-content: center; }
+  .photo-container, .photo-wrap { width: 200px; height: 250px; }
   .photo-badge { bottom: -10px; right: -10px; }
 
-  .section-wrap { padding: 3.5rem 1.5rem; }
-  .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-  .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
-  .form-row { grid-template-columns: 1fr; }
+  /* sections */
+  .section-wrap { padding: 3.5rem 1.2rem; }
+  .sec-header { margin-bottom: 2rem; }
 
-  .pub-card { grid-template-columns: 1fr; gap: 0.7rem; }
+  /* about grid */
+  .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+
+  /* edu item on mobile */
+  .edu-item { flex-direction: row; gap: 0.8rem; }
+  .edu-logo { width: 36px; height: 36px; }
+
+  /* pub card */
+  .pub-card { grid-template-columns: 1fr; gap: 0.6rem; padding: 1rem 1.2rem; }
   .pub-year { text-align: left; }
   .pub-actions { flex-direction: row; flex-wrap: wrap; }
 
-  footer { flex-direction: column; gap: 0.5rem; text-align: center; padding: 1.5rem; }
+  /* contact */
+  .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .form-row { grid-template-columns: 1fr; }
 
-  .back-to-top { bottom: 1.5rem; right: 1rem; }
+  /* footer */
+  footer { flex-direction: column; gap: 0.4rem; text-align: center; padding: 1.4rem 1.2rem; }
 }
 
 @media (max-width: 480px) {
-  #home { padding: 5rem 1rem 2.5rem; }
-  .section-wrap { padding: 2.5rem 1rem; }
-  .photo-container { width: 180px; }
-  .photo-wrap { width: 180px; height: 220px; }
   h1.hero-name { font-size: 2rem; }
-  .pub-card { padding: 1rem; }
-  .pub-filters { gap: 0.4rem; }
-  .pf-btn { font-size: 0.55rem; padding: 0.3rem 0.7rem; }
-  .training-card { padding: 1.3rem; }
-  footer { font-size: 0.55rem; }
-}
-
-@media (min-width: 901px) {
-  .mobile-nav { display: none !important; }
+  .hero-tag { font-size: 0.58rem; }
+  .pub-card { padding: 0.9rem 1rem; }
+  .pub-title { font-size: 0.92rem; }
+  .sec-title { font-size: 1.6rem; }
 }
 </style>
 </head>
 <body>
 
-<!-- MOBILE NAV -->
-<div class="mobile-nav" id="mobileNav">
-  <a href="#home" onclick="closeMobileNav()">Home</a>
-  <a href="#about" onclick="closeMobileNav()">About</a>
-  <a href="#publications" onclick="closeMobileNav()">Publications</a>
-  <a href="#training" onclick="closeMobileNav()">Training</a>
-  <a href="#contact" onclick="closeMobileNav()">Contact</a>
-</div>
-
-<!-- THEME TOGGLE (desktop only) -->
-<div class="theme-toggle" onclick="toggleTheme()" title="Toggle light/dark mode">
-  <div class="toggle-track">
+<!-- THEME TOGGLE -->
+<div class="theme-toggle">
+  <div class="toggle-track" onclick="toggleTheme()" title="Toggle light/dark">
     <span class="toggle-icon">☀️</span>
     <div class="toggle-thumb"></div>
     <span class="toggle-icon">🌙</span>
   </div>
 </div>
 
-<!-- BACK TO TOP -->
-<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top">
+<!-- GO TO TOP -->
+<button class="go-top" id="goTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top">
   <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
     <path d="M5 15l7-7 7 7"/>
   </svg>
@@ -554,21 +487,31 @@ h1.hero-name { animation-delay: 0.14s; }
     <li><a href="#training">Training</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
-  <button class="hamburger" id="hamburger" onclick="toggleMobileNav()" aria-label="Menu">
+  <button class="nav-hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
     <span></span><span></span><span></span>
   </button>
 </nav>
+<div class="nav-mobile" id="navMobile">
+  <a href="#about"        onclick="closeMenu()">About</a>
+  <a href="#publications" onclick="closeMenu()">Publications</a>
+  <a href="#training"     onclick="closeMenu()">Training</a>
+  <a href="#contact"      onclick="closeMenu()">Contact</a>
+</div>
 
-<!-- ══════════ HERO ══════════ -->
+<!-- ══ HERO ══ -->
 <section id="home">
   <div class="hero-left">
     <div class="hero-tag">Graduate Research Assistant · EEE · AUST</div>
     <h1 class="hero-name">Prangon <em>Chowdhury</em></h1>
-    <div class="hero-discipline">Electrical Engineering &nbsp;·&nbsp; Electric Power Systems</div>
-    <p class="hero-tagline">
-      Architecting the grid of tomorrow — at the confluence of power electronics, control theory, and renewable energy, shaping the infrastructure of a decarbonized future.
-    </p>
+    <div class="hero-field">Electrical Engineering · Electric Power Systems</div>
+    <p class="hero-role">Graduate Research Assistant</p>
     <p class="hero-inst">Ahsanullah University of Science &amp; Technology · Dhaka, Bangladesh</p>
+    <p class="hero-bio">
+      I design <strong>electric power systems</strong> at the convergence of power electronics, control theory, and sustainable energy — developing the technologies and infrastructure that will power a cleaner, decarbonized world.
+    </p>
+    <div class="hero-ubc">
+      I will be an incoming student in <strong>Electrical and Computer Engineering</strong> at the <strong>University of British Columbia</strong>, working under the supervision of <strong>Prof. Juri Jatskevich</strong> in the Electric Power and Energy Systems group.
+    </div>
     <div class="hero-links">
       <a href="https://scholar.google.com/citations?user=YOqfydcAAAAJ&hl=en&oi=ao" target="_blank" class="hero-link hl-primary">
         <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 14l9-5-9-5-9 5 9 5z"/><path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/></svg>
@@ -593,13 +536,11 @@ h1.hero-name { animation-delay: 0.14s; }
         <div class="photo-corner pc-tr"></div>
         <div class="photo-corner pc-bl"></div>
         <div class="photo-corner pc-br"></div>
-        <img
-          src="https://scholar.googleusercontent.com/citations?view_op=medium_photo&user=YOqfydcAAAAJ&citpid=46"
+        <img src="https://scholar.googleusercontent.com/citations?view_op=medium_photo&user=YOqfydcAAAAJ&citpid=46"
           alt="Prangon Chowdhury"
-          onerror="this.style.display='none';document.getElementById('photo-fallback').style.display='flex';"
-        >
-        <div id="photo-fallback" style="display:none;width:100%;height:100%;align-items:center;justify-content:center;flex-direction:column;gap:0.8rem;color:var(--muted);font-family:'JetBrains Mono',monospace;font-size:0.68rem;text-align:center;padding:1rem;">
-          <svg width="48" height="48" fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+          onerror="this.style.display='none';document.getElementById('photo-fb').style.display='flex';">
+        <div id="photo-fb" style="display:none;width:100%;height:100%;flex-direction:column;align-items:center;justify-content:center;gap:0.8rem;color:var(--muted);font-family:'JetBrains Mono',monospace;font-size:0.67rem;text-align:center;padding:1rem;">
+          <svg width="44" height="44" fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
           Prangon Chowdhury
         </div>
       </div>
@@ -611,10 +552,10 @@ h1.hero-name { animation-delay: 0.14s; }
   </div>
 </section>
 
-<!-- ══════════ ABOUT ══════════ -->
+<!-- ══ ABOUT ══ -->
 <div class="sec-divider"></div>
-<section id="about" style="background:var(--bg2);">
-<div class="section-wrap">
+<div style="background:var(--bg2);">
+<div class="section-wrap" id="about">
   <div class="sec-header">
     <h2 class="sec-title">About Me</h2>
     <div class="sec-line"></div>
@@ -627,17 +568,15 @@ h1.hero-name { animation-delay: 0.14s; }
 
       <div class="about-tabs">
         <div class="tabs-header">
-          <button class="tab-btn active" onclick="switchTab('edu', this)">Education</button>
-          <button class="tab-btn" onclick="switchTab('exp', this)">Experience</button>
-          <button class="tab-btn" onclick="switchTab('interests', this)">Interests</button>
+          <button class="tab-btn active" onclick="switchTab('edu',this)">Education</button>
+          <button class="tab-btn" onclick="switchTab('exp',this)">Experience</button>
+          <button class="tab-btn" onclick="switchTab('interests',this)">Interests</button>
         </div>
 
         <div class="tab-content active" id="tab-edu">
           <div class="edu-item">
-            <div class="edu-logo">
-              <img src="https://aust.edu/images/aust_logo.svg" alt="AUST Logo" onerror="this.style.display='none'">
-            </div>
-            <div class="edu-body">
+            <img class="edu-logo" src="https://aust.edu/images/aust_logo.svg" alt="AUST" onerror="this.style.display='none'">
+            <div class="edu-text">
               <div class="edu-degree">Master of Science in Electrical &amp; Electronic Engineering</div>
               <div class="edu-school">Ahsanullah University of Science and Technology</div>
               <div class="edu-addr">141 &amp; 142, Love Road, Tejgaon Industrial Area, Dhaka-1208, Bangladesh</div>
@@ -645,50 +584,39 @@ h1.hero-name { animation-delay: 0.14s; }
             </div>
           </div>
           <div class="edu-item">
-            <div class="edu-logo">
-              <img src="https://aust.edu/images/aust_logo.svg" alt="AUST Logo" onerror="this.style.display='none'">
-            </div>
-            <div class="edu-body">
+            <img class="edu-logo" src="https://aust.edu/images/aust_logo.svg" alt="AUST" onerror="this.style.display='none'">
+            <div class="edu-text">
               <div class="edu-degree">Bachelor of Science in Electrical &amp; Electronic Engineering</div>
               <div class="edu-school">Ahsanullah University of Science and Technology</div>
               <div class="edu-addr">141 &amp; 142, Love Road, Tejgaon Industrial Area, Dhaka-1208, Bangladesh</div>
               <div class="edu-year">July 2019 – November 2023</div>
             </div>
           </div>
-          <div class="edu-item">
-            <div class="edu-logo" style="background:transparent;border-color:transparent;">
-              <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.2" viewBox="0 0 24 24" style="color:var(--muted)"><path d="M12 14l9-5-9-5-9 5 9 5z"/><path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/></svg>
-
+        </div>
 
         <div class="tab-content" id="tab-exp">
           <div class="exp-item">
-            <div class="exp-title">Research Assistant</div>
+            <div class="exp-title">Graduate Research Assistant</div>
             <div class="exp-org">Ahsanullah University of Science and Technology (AUST)</div>
-            <div class="exp-period">May 2025 – Present</div>
+            <div class="exp-period">June 2025 – Present</div>
             <div class="exp-detail">Project: Performance Enhancement of the Modern Hybrid Electric Vehicle (ID: AIRG/2024/EEE/06/19)</div>
           </div>
           <div class="exp-item">
-            <div class="exp-title">Research Assistant</div>
+            <div class="exp-title">Graduate Research Assistant</div>
             <div class="exp-org">Brac University</div>
             <div class="exp-period">February 2025 – August 2025</div>
             <div class="exp-detail">Project: Developing Demand Side Management Techniques for Commercial Consumers</div>
           </div>
           <div class="exp-item">
-            <div class="exp-title">Reviewer — Conference</div>
-            <div class="exp-org">8th International Conference on Mechanical, Electric, and Industrial Engineering (MEIE 2025), Taiyuan, China</div>
-            <div class="exp-period">2025</div>
-            <div class="exp-detail">Reviewed technical papers for conference proceedings.</div>
-          </div>
-          <div class="exp-item">
             <div class="exp-title">Journal Reviewer</div>
             <div class="exp-org">Elsevier · Springer Nature · Nature Portfolio · Sage · Tech Science Press</div>
             <div class="exp-period">2025 – Present</div>
-            <div class="exp-detail">Active reviewer for 20+ international journals across energy, electrical engineering, and sustainability domains.</div>
+            <div class="exp-detail">Active reviewer for 20+ international journals across energy, electrical engineering, and sustainability.</div>
           </div>
         </div>
 
         <div class="tab-content" id="tab-interests">
-          <p style="font-size:0.88rem;color:var(--muted2);margin-bottom:1rem;margin-top:0.5rem;line-height:1.8;">Beyond academia, I enjoy:</p>
+          <p style="font-size:0.88rem;color:var(--muted2);margin:0.8rem 0 1rem;line-height:1.8;">Beyond academia:</p>
           <div class="interest-cloud">
             <div class="itag">📷 Photography</div>
             <div class="itag">🎵 Music</div>
@@ -704,12 +632,12 @@ h1.hero-name { animation-delay: 0.14s; }
         <div class="skill-group-label">Design &amp; Simulation</div>
         <div class="skill-cloud">
           <span class="stag">PLECS</span><span class="stag">MATLAB Simulink</span>
-          <span class="stag">DIgSILENT PowerFactory</span><span class="stag">ANSYS Maxwell</span>
+          <span class="stag">DIgSILENT</span><span class="stag">ANSYS Maxwell</span>
           <span class="stag">LTspice</span><span class="stag">PSpice</span>
           <span class="stag">Proteus</span><span class="stag">Cadence Virtuoso</span>
-          <span class="stag">AutoCAD (Electrical)</span><span class="stag">PVsyst</span>
+          <span class="stag">AutoCAD</span><span class="stag">PVsyst</span>
           <span class="stag">Homer Pro &amp; Grid</span><span class="stag">SAM</span>
-          <span class="stag">Powerworld Simulator</span><span class="stag">VOSviewer</span>
+          <span class="stag">Powerworld</span><span class="stag">VOSviewer</span>
           <span class="stag">Sketchup</span>
         </div>
       </div>
@@ -737,55 +665,58 @@ h1.hero-name { animation-delay: 0.14s; }
           <span class="stag">EV Technology</span>
           <span class="stag">Energy Optimization</span>
           <span class="stag">Renewable Energy</span>
-          <span class="stag">Demand Side Management</span>
+          <span class="stag">Demand Side Mgmt</span>
           <span class="stag">Microgrid</span>
         </div>
       </div>
     </div>
   </div>
 </div>
-</section>
+</div>
 
-<!-- ══════════ PUBLICATIONS ══════════ -->
+<!-- ══ PUBLICATIONS ══ -->
 <div class="sec-divider"></div>
-<section id="publications" style="background:var(--bg);">
-<div class="section-wrap">
+<div style="background:var(--bg);">
+<div class="section-wrap" id="publications">
   <div class="sec-header">
     <h2 class="sec-title">Publications</h2>
     <div class="sec-line"></div>
   </div>
   <div class="pub-filters">
-    <button class="pf-btn active" onclick="filterPubs('all',this)">All (21)</button>
+    <button class="pf-btn active" onclick="filterPubs('all',this)">All (19)</button>
     <button class="pf-btn" onclick="filterPubs('journal',this)">Journals (15)</button>
     <button class="pf-btn" onclick="filterPubs('conference',this)">Conference (4)</button>
     <button class="pf-btn" onclick="filterPubs('thesis',this)">Thesis (2)</button>
   </div>
-  <div class="pub-grid" id="pub-grid">
+  <div class="pub-grid">
 
-    <!-- ── JOURNALS ── -->
+    <!-- ── 2026 ── -->
     <div class="pub-card" data-type="journal">
       <div class="pub-year">Jan 2026</div>
       <div>
         <span class="pub-type-badge badge-journal">Journal</span>
         <div class="pub-title">Grid-connected inverter for photovoltaic energy harvesting: Advances in topologies and control techniques</div>
         <div class="pub-authors">Md. Kawsar Hossain, <strong>Prangon Chowdhury</strong>, Iffat Nowshin, Md. Rabiul Islam, Abdullah Al-Hysam, Omar Farrok</div>
-        <div class="pub-venue">Energy Conversion and Management: X, Elsevier · Volume 29, January 2026, 101422 <span class="pub-if">IF 7.6 · CiteScore 11.3</span></div>
+        <div class="pub-venue">Energy Conversion and Management: X, Elsevier · Volume 29, January 2026, Article 101422 <span class="pub-if">IF 7.6 · CiteScore 11.3</span></div>
       </div>
       <div class="pub-actions">
         <a href="https://doi.org/10.1016/j.ecmx.2025.101422" target="_blank" class="pub-btn">DOI ↗</a>
+        <a href="https://doi.org/10.1016/j.ecmx.2025.101422" target="_blank" class="pub-btn">PDF ↗</a>
       </div>
     </div>
 
+    <!-- ── 2025 ── -->
     <div class="pub-card" data-type="journal">
       <div class="pub-year">Nov 2025</div>
       <div>
         <span class="pub-type-badge badge-journal">Journal</span>
         <div class="pub-title">Molten salt reactor neutronics and fuel cycle – review of advancements and potential future research directions</div>
-        <div class="pub-authors">Ephraim Bonah Agyekum, Flavio Odoi-Yorke, Tariq Alkhrissat, Farhan Lafta Rashid, Mehdi Jahangiri, <strong>Prangon Chowdhury</strong>, Ahmed K Hussein</div>
-        <div class="pub-venue">Energy Exploration &amp; Exploitation, Sage Journals · Volume 43, November 2025, Issue 6 <span class="pub-if">IF 1.6 · CiteScore 4.9</span></div>
+        <div class="pub-authors">Ephraim Bonah Agyekum, Flavio Odoi-Yorke, Tariq Alkhrissat, Farhan Lafta Rashid, Mehdi Jahangiri, <strong>Prangon Chowdhury</strong>, Ahmed K. Hussein</div>
+        <div class="pub-venue">Energy Exploration &amp; Exploitation, Sage Journals · Volume 43, Issue 6, November 2025 <span class="pub-if">IF 1.6 · CiteScore 4.9</span></div>
       </div>
       <div class="pub-actions">
         <a href="https://doi.org/10.1177/01445987251398017" target="_blank" class="pub-btn">DOI ↗</a>
+        <a href="https://doi.org/10.1177/01445987251398017" target="_blank" class="pub-btn">PDF ↗</a>
       </div>
     </div>
 
@@ -795,10 +726,11 @@ h1.hero-name { animation-delay: 0.14s; }
         <span class="pub-type-badge badge-journal">Journal</span>
         <div class="pub-title">Economic feasibility and environmental benefits of green hydrogen production in Southeast Asia using solar and wind energy</div>
         <div class="pub-authors"><strong>Prangon Chowdhury</strong>, Prithibi Das, Rahbaar Yeassin, Ephraim Bonah Agyekum, Tariq Alkhrissat, Omar Farrok</div>
-        <div class="pub-venue">Gas Science and Engineering, Elsevier · Volume 143, November 2025, 205741 <span class="pub-if">IF 5.5 · CiteScore 12.1</span></div>
+        <div class="pub-venue">Gas Science and Engineering, Elsevier · Volume 143, November 2025, Article 205741 <span class="pub-if">IF 5.5 · CiteScore 12.1</span></div>
       </div>
       <div class="pub-actions">
         <a href="https://doi.org/10.1016/j.jgsce.2025.205741" target="_blank" class="pub-btn">DOI ↗</a>
+        <a href="https://doi.org/10.1016/j.jgsce.2025.205741" target="_blank" class="pub-btn">PDF ↗</a>
       </div>
     </div>
 
@@ -808,10 +740,11 @@ h1.hero-name { animation-delay: 0.14s; }
         <span class="pub-type-badge badge-journal">Journal</span>
         <div class="pub-title">Wireless charging for electric vehicles: A review on environmental, health, technical, and policy landscape</div>
         <div class="pub-authors"><strong>Prangon Chowdhury</strong>, Md. Moinul Alom Shovon, Rahbaar Yeassin, Omar Farrok</div>
-        <div class="pub-venue">Energy Conversion and Management: X, Elsevier · Volume 28, October 2025, 101363 <span class="pub-if">IF 7.6 · CiteScore 11.3</span></div>
+        <div class="pub-venue">Energy Conversion and Management: X, Elsevier · Volume 28, October 2025, Article 101363 <span class="pub-if">IF 7.6 · CiteScore 11.3</span></div>
       </div>
       <div class="pub-actions">
         <a href="https://doi.org/10.1016/j.ecmx.2025.101363" target="_blank" class="pub-btn">DOI ↗</a>
+        <a href="https://doi.org/10.1016/j.ecmx.2025.101363" target="_blank" class="pub-btn">PDF ↗</a>
       </div>
     </div>
 
@@ -821,10 +754,11 @@ h1.hero-name { animation-delay: 0.14s; }
         <span class="pub-type-badge badge-journal">Journal</span>
         <div class="pub-title">Towards efficient energy management systems for electric vehicles: advances in control techniques and applications</div>
         <div class="pub-authors">Ferdous S. Azad, Abidur Rahman, Surajit Das Barman, <strong>Prangon Chowdhury</strong>, Md Sawkat Ali, Omar Farrok</div>
-        <div class="pub-venue">Energy Conversion and Management: X, Elsevier · Volume 28, October 2025, 101326 <span class="pub-if">IF 7.6 · CiteScore 11.3</span></div>
+        <div class="pub-venue">Energy Conversion and Management: X, Elsevier · Volume 28, October 2025, Article 101326 <span class="pub-if">IF 7.6 · CiteScore 11.3</span></div>
       </div>
       <div class="pub-actions">
         <a href="https://doi.org/10.1016/j.ecmx.2025.101326" target="_blank" class="pub-btn">DOI ↗</a>
+        <a href="https://doi.org/10.1016/j.ecmx.2025.101326" target="_blank" class="pub-btn">PDF ↗</a>
       </div>
     </div>
 
@@ -834,10 +768,11 @@ h1.hero-name { animation-delay: 0.14s; }
         <span class="pub-type-badge badge-journal">Journal</span>
         <div class="pub-title">Power sector transformation in Bangladesh: Paving the pathways towards sustainable development</div>
         <div class="pub-authors"><strong>Prangon Chowdhury</strong>, Tasniah Islam, Israt Jahan Tasmia, Nahid-Ur-Rahman Chowdhury</div>
-        <div class="pub-venue">Energy Strategy Reviews, Elsevier · Volume 61, September 2025, 101829 <span class="pub-if">IF 9.9 · CiteScore 13.5</span></div>
+        <div class="pub-venue">Energy Strategy Reviews, Elsevier · Volume 61, September 2025, Article 101829 <span class="pub-if">IF 9.9 · CiteScore 13.5</span></div>
       </div>
       <div class="pub-actions">
         <a href="https://doi.org/10.1016/j.esr.2025.101829" target="_blank" class="pub-btn">DOI ↗</a>
+        <a href="https://doi.org/10.1016/j.esr.2025.101829" target="_blank" class="pub-btn">PDF ↗</a>
       </div>
     </div>
 
@@ -847,10 +782,11 @@ h1.hero-name { animation-delay: 0.14s; }
         <span class="pub-type-badge badge-journal">Journal</span>
         <div class="pub-title">A state-of-the-art review of electrolyte systems for vanadium redox flow battery – status of the technology, and future research directions</div>
         <div class="pub-authors">Ephraim Bonah Agyekum, Mustafa Abdullah, Flavio Odoi-Yorke, Arman Ameen, <strong>Prangon Chowdhury</strong>, Muhammad Amir Raza, Farhan Lafta Rashid, Ahmed Kadhim Hussein</div>
-        <div class="pub-venue">Energy Conversion and Management: X, Elsevier · Volume 27, July 2025, 101180 <span class="pub-if">IF 7.6 · CiteScore 11.3</span></div>
+        <div class="pub-venue">Energy Conversion and Management: X, Elsevier · Volume 27, July 2025, Article 101180 <span class="pub-if">IF 7.6 · CiteScore 11.3</span></div>
       </div>
       <div class="pub-actions">
         <a href="https://doi.org/10.1016/j.ecmx.2025.101180" target="_blank" class="pub-btn">DOI ↗</a>
+        <a href="https://doi.org/10.1016/j.ecmx.2025.101180" target="_blank" class="pub-btn">PDF ↗</a>
       </div>
     </div>
 
@@ -860,10 +796,11 @@ h1.hero-name { animation-delay: 0.14s; }
         <span class="pub-type-badge badge-journal">Journal</span>
         <div class="pub-title">Investigating the nexus between radiolysis using spent nuclear fuel and hydrogen production, with environmental safety considerations – a literature review</div>
         <div class="pub-authors">Ephraim Bonah Agyekum, Flavio Odoi-Yorke, Mustafa Abdullah, <strong>Prangon Chowdhury</strong></div>
-        <div class="pub-venue">Nuclear Engineering and Design, Elsevier · Volume 438, July 2025, 114048 <span class="pub-if">IF 2.1 · CiteScore 3.4</span></div>
+        <div class="pub-venue">Nuclear Engineering and Design, Elsevier · Volume 438, July 2025, Article 114048 <span class="pub-if">IF 2.1 · CiteScore 3.4</span></div>
       </div>
       <div class="pub-actions">
         <a href="https://doi.org/10.1016/j.nucengdes.2025.114048" target="_blank" class="pub-btn">DOI ↗</a>
+        <a href="https://doi.org/10.1016/j.nucengdes.2025.114048" target="_blank" class="pub-btn">PDF ↗</a>
       </div>
     </div>
 
@@ -877,6 +814,7 @@ h1.hero-name { animation-delay: 0.14s; }
       </div>
       <div class="pub-actions">
         <a href="https://doi.org/10.1016/j.ijhydene.2025.05.100" target="_blank" class="pub-btn">DOI ↗</a>
+        <a href="https://doi.org/10.1016/j.ijhydene.2025.05.100" target="_blank" class="pub-btn">PDF ↗</a>
       </div>
     </div>
 
@@ -886,10 +824,11 @@ h1.hero-name { animation-delay: 0.14s; }
         <span class="pub-type-badge badge-journal">Journal</span>
         <div class="pub-title">Comparative performance evaluation of economic load dispatch using metaheuristic techniques: A practical case study for Bangladesh</div>
         <div class="pub-authors">Sumaiya Janefar, <strong>Prangon Chowdhury</strong>, Rahbaar Yeassin, Mahmudul Hasan, Nahid-Ur-Rahman Chowdhury</div>
-        <div class="pub-venue">Results in Engineering, Elsevier · Volume 26, June 2025, 104720 <span class="pub-if">IF 7.9 · CiteScore 7.3</span></div>
+        <div class="pub-venue">Results in Engineering, Elsevier · Volume 26, June 2025, Article 104720 <span class="pub-if">IF 7.9 · CiteScore 7.3</span></div>
       </div>
       <div class="pub-actions">
         <a href="https://doi.org/10.1016/j.rineng.2025.104720" target="_blank" class="pub-btn">DOI ↗</a>
+        <a href="https://doi.org/10.1016/j.rineng.2025.104720" target="_blank" class="pub-btn">PDF ↗</a>
       </div>
     </div>
 
@@ -899,10 +838,11 @@ h1.hero-name { animation-delay: 0.14s; }
         <span class="pub-type-badge badge-journal">Journal</span>
         <div class="pub-title">Complementarity in renewable energy sources: Insights from scientometric analysis</div>
         <div class="pub-authors"><strong>Prangon Chowdhury</strong>, Nahid-Ur-Rahman Chowdhury, Omar Farrok</div>
-        <div class="pub-venue">Energy Conversion and Management: X, Elsevier · Volume 26, April 2025, 100930 <span class="pub-if">IF 7.6 · CiteScore 11.3</span></div>
+        <div class="pub-venue">Energy Conversion and Management: X, Elsevier · Volume 26, April 2025, Article 100930 <span class="pub-if">IF 7.6 · CiteScore 11.3</span></div>
       </div>
       <div class="pub-actions">
         <a href="https://doi.org/10.1016/j.ecmx.2025.100930" target="_blank" class="pub-btn">DOI ↗</a>
+        <a href="https://doi.org/10.1016/j.ecmx.2025.100930" target="_blank" class="pub-btn">PDF ↗</a>
       </div>
     </div>
 
@@ -916,6 +856,7 @@ h1.hero-name { animation-delay: 0.14s; }
       </div>
       <div class="pub-actions">
         <a href="https://doi.org/10.1016/j.ijhydene.2025.02.034" target="_blank" class="pub-btn">DOI ↗</a>
+        <a href="https://doi.org/10.1016/j.ijhydene.2025.02.034" target="_blank" class="pub-btn">PDF ↗</a>
       </div>
     </div>
 
@@ -925,10 +866,11 @@ h1.hero-name { animation-delay: 0.14s; }
         <span class="pub-type-badge badge-journal">Journal</span>
         <div class="pub-title">Biomass to biofuel: Impacts and mitigation of environmental, health, and socioeconomic challenges</div>
         <div class="pub-authors"><strong>Prangon Chowdhury</strong>, Nafisa Anjum Mahi, Rahbaar Yeassin, Nahid-Ur-Rahman Chowdhury, Omar Farrok</div>
-        <div class="pub-venue">Energy Conversion and Management: X (Special Issue), Elsevier · Volume 25, January 2025, 100889 <span class="pub-if">IF 7.6 · CiteScore 11.3</span></div>
+        <div class="pub-venue">Energy Conversion and Management: X (Special Issue), Elsevier · Volume 25, January 2025, Article 100889 <span class="pub-if">IF 7.6 · CiteScore 11.3</span></div>
       </div>
       <div class="pub-actions">
         <a href="https://doi.org/10.1016/j.ecmx.2025.100889" target="_blank" class="pub-btn">DOI ↗</a>
+        <a href="https://doi.org/10.1016/j.ecmx.2025.100889" target="_blank" class="pub-btn">PDF ↗</a>
       </div>
     </div>
 
@@ -938,10 +880,11 @@ h1.hero-name { animation-delay: 0.14s; }
         <span class="pub-type-badge badge-journal">Journal</span>
         <div class="pub-title">Impacts of digitalization on smart grids, renewable energy, and demand response: An updated review of current applications</div>
         <div class="pub-authors">Mou Mahmood, <strong>Prangon Chowdhury</strong>, Rahbaar Yeassin, Mahmudul Hasan, Tanvir Ahmad, Nahid-Ur-Rahman Chowdhury</div>
-        <div class="pub-venue">Energy Conversion and Management: X, Elsevier · Volume 24, October 2024, 100790 <span class="pub-if">IF 7.6 · CiteScore 11.3</span></div>
+        <div class="pub-venue">Energy Conversion and Management: X, Elsevier · Volume 24, October 2024, Article 100790 <span class="pub-if">IF 7.6 · CiteScore 11.3</span></div>
       </div>
       <div class="pub-actions">
         <a href="https://doi.org/10.1016/j.ecmx.2024.100790" target="_blank" class="pub-btn">DOI ↗</a>
+        <a href="https://doi.org/10.1016/j.ecmx.2024.100790" target="_blank" class="pub-btn">PDF ↗</a>
       </div>
     </div>
 
@@ -951,14 +894,15 @@ h1.hero-name { animation-delay: 0.14s; }
         <span class="pub-type-badge badge-journal">Journal</span>
         <div class="pub-title">Techno-economic and environmental analysis of hybrid energy systems for remote areas: A sustainable case study in Bangladesh</div>
         <div class="pub-authors">Md. Fahid Hasan Mojumder, Tasniah Islam, <strong>Prangon Chowdhury</strong>, Mahmudul Hasan, Nusra Akter Takia, Nahid-Ur-Rahman Chowdhury, Omar Farrok</div>
-        <div class="pub-venue">Energy Conversion and Management: X, Elsevier · Volume 23, July 2024, 100664 <span class="pub-if">IF 7.6 · CiteScore 11.3</span></div>
+        <div class="pub-venue">Energy Conversion and Management: X, Elsevier · Volume 23, July 2024, Article 100664 <span class="pub-if">IF 7.6 · CiteScore 11.3</span></div>
       </div>
       <div class="pub-actions">
         <a href="https://doi.org/10.1016/j.ecmx.2024.100664" target="_blank" class="pub-btn">DOI ↗</a>
+        <a href="https://doi.org/10.1016/j.ecmx.2024.100664" target="_blank" class="pub-btn">PDF ↗</a>
       </div>
     </div>
 
-    <!-- ── CONFERENCES ── -->
+    <!-- ── CONFERENCE ── newest first ── -->
     <div class="pub-card" data-type="conference">
       <div class="pub-year">Jul–Aug 2025</div>
       <div>
@@ -969,6 +913,7 @@ h1.hero-name { animation-delay: 0.14s; }
       </div>
       <div class="pub-actions">
         <a href="https://doi.org/10.1109/QPAIN66474.2025.11171795" target="_blank" class="pub-btn">DOI ↗</a>
+        <a href="https://doi.org/10.1109/QPAIN66474.2025.11171795" target="_blank" class="pub-btn">PDF ↗</a>
       </div>
     </div>
 
@@ -978,10 +923,11 @@ h1.hero-name { animation-delay: 0.14s; }
         <span class="pub-type-badge badge-conference">Conference</span>
         <div class="pub-title">Feasibility assessment of an off-grid hybrid energy system for a char area in Bangladesh</div>
         <div class="pub-authors"><strong>Prangon Chowdhury</strong>, Shamim Forhad, Mohammed Faiyaz Rahman, Israt Jahan Tasmia, Mahmudul Hasan, Nahid-Ur-Rahman Chowdhury</div>
-        <div class="pub-venue">2024 International Conference on Power, Electrical, Electronics and Industrial Applications (PEEIACON 2024) · RUET, Rajshahi, Bangladesh · September 2024</div>
+        <div class="pub-venue">2024 International Conference on Power, Electrical, Electronics and Industrial Applications (PEEIACON 2024) · Rajshahi University of Engineering &amp; Technology, Rajshahi, Bangladesh · September 2024</div>
       </div>
       <div class="pub-actions">
         <a href="https://doi.org/10.1109/PEEIACON63629.2024.10800194" target="_blank" class="pub-btn">DOI ↗</a>
+        <a href="https://doi.org/10.1109/PEEIACON63629.2024.10800194" target="_blank" class="pub-btn">PDF ↗</a>
       </div>
     </div>
 
@@ -991,10 +937,11 @@ h1.hero-name { animation-delay: 0.14s; }
         <span class="pub-type-badge badge-conference">Conference</span>
         <div class="pub-title">Techno-economic evaluation of various hybrid energy systems optimization for rural Bangladesh</div>
         <div class="pub-authors">Md. Fahid Hasan Mojumder, Tasniah Islam, <strong>Prangon Chowdhury</strong>, Nusra Akter Takia, Mahmudul Hasan, Nahid-Ur-Rahman Chowdhury</div>
-        <div class="pub-venue">2024 International Conference on Power, Electrical, Electronics and Industrial Applications (PEEIACON 2024) · RUET, Rajshahi, Bangladesh · September 2024</div>
+        <div class="pub-venue">2024 International Conference on Power, Electrical, Electronics and Industrial Applications (PEEIACON 2024) · Rajshahi University of Engineering &amp; Technology, Rajshahi, Bangladesh · September 2024</div>
       </div>
       <div class="pub-actions">
         <a href="https://doi.org/10.1109/PEEIACON63629.2024.10800667" target="_blank" class="pub-btn">DOI ↗</a>
+        <a href="https://doi.org/10.1109/PEEIACON63629.2024.10800667" target="_blank" class="pub-btn">PDF ↗</a>
       </div>
     </div>
 
@@ -1008,6 +955,7 @@ h1.hero-name { animation-delay: 0.14s; }
       </div>
       <div class="pub-actions">
         <a href="https://doi.org/10.1109/iCACCESS61735.2024.10499619" target="_blank" class="pub-btn">DOI ↗</a>
+        <a href="https://doi.org/10.1109/iCACCESS61735.2024.10499619" target="_blank" class="pub-btn">PDF ↗</a>
       </div>
     </div>
 
@@ -1018,7 +966,7 @@ h1.hero-name { animation-delay: 0.14s; }
         <span class="pub-type-badge badge-thesis">M.Sc. Thesis</span>
         <div class="pub-title">Design of a Co-Optimized Wireless Power Transfer System for Vehicle-To-Vehicle Applications</div>
         <div class="pub-authors"><strong>Prangon Chowdhury</strong> · Supervisor: Prof. Omar Farrok</div>
-        <div class="pub-venue">Ahsanullah University of Science and Technology, Dhaka, Bangladesh · 2026</div>
+        <div class="pub-venue">Ahsanullah University of Science and Technology · Dhaka, Bangladesh</div>
       </div>
       <div class="pub-actions">
         <span class="pub-btn disabled">In Progress</span>
@@ -1031,7 +979,7 @@ h1.hero-name { animation-delay: 0.14s; }
         <span class="pub-type-badge badge-thesis">B.Sc. Thesis</span>
         <div class="pub-title">Developing Demand Side Management Techniques for Commercial Consumers</div>
         <div class="pub-authors"><strong>Prangon Chowdhury</strong> · Supervisor: Prof. Tareq Aziz</div>
-        <div class="pub-venue">Ahsanullah University of Science and Technology, Dhaka, Bangladesh · 2023</div>
+        <div class="pub-venue">Ahsanullah University of Science and Technology · Dhaka, Bangladesh</div>
       </div>
       <div class="pub-actions">
         <a href="https://www.researchgate.net" target="_blank" class="pub-btn">Book ↗</a>
@@ -1041,12 +989,12 @@ h1.hero-name { animation-delay: 0.14s; }
 
   </div>
 </div>
-</section>
+</div>
 
-<!-- ══════════ TRAINING ══════════ -->
+<!-- ══ TRAINING ══ -->
 <div class="sec-divider"></div>
-<section id="training" style="background:var(--bg2);">
-<div class="section-wrap">
+<div style="background:var(--bg2);">
+<div class="section-wrap" id="training">
   <div class="sec-header">
     <h2 class="sec-title">Professional Training</h2>
     <div class="sec-line"></div>
@@ -1055,19 +1003,17 @@ h1.hero-name { animation-delay: 0.14s; }
     <div class="tc-title">Professional Solar PV Power Plant Design</div>
     <div class="tc-org">Ulterior Engineering — Dhaka, Bangladesh</div>
     <div class="tc-period">March 2025 – May 2025</div>
-    <div class="tc-badge">ISO 21001:2018 Certified · Accredited by National Skill Development Authority, Bangladesh</div>
-    <div class="tc-bullets">
-      <div class="tc-bullet">Trained in designing and conducting feasibility analysis of PV systems through real-world projects.</div>
-      <div class="tc-bullet">Developed proficiency in using advanced tools for system simulation and design.</div>
-    </div>
+    <div class="tc-badge">ISO 21001:2018 Certified · Accredited by the National Skill Development Authority, Bangladesh</div>
+    <div class="tc-bullet">Trained in designing and conducting feasibility analysis of PV systems through real-world projects.</div>
+    <div class="tc-bullet">Developed proficiency in using advanced tools for system simulation and design.</div>
   </div>
 </div>
-</section>
+</div>
 
-<!-- ══════════ CONTACT ══════════ -->
+<!-- ══ CONTACT ══ -->
 <div class="sec-divider"></div>
-<section id="contact" style="background:var(--bg);">
-<div class="section-wrap">
+<div style="background:var(--bg);">
+<div class="section-wrap" id="contact">
   <div class="contact-grid">
     <div class="contact-intro">
       <div class="sec-header">
@@ -1076,19 +1022,23 @@ h1.hero-name { animation-delay: 0.14s; }
       <p>I am open to research collaborations and academic discussions. Feel free to reach out — I try to respond within 48 hours.</p>
       <div class="social-links">
         <a href="mailto:prangon.aust@gmail.com" class="social-link">
-          <svg class="sl-icon" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          <svg class="sl-icon" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
           <div class="sl-info"><div class="sl-label">Email</div><div class="sl-val">prangon.aust@gmail.com</div></div>
         </a>
         <a href="https://www.linkedin.com/in/prangonchy-aust/" target="_blank" class="social-link">
-          <svg class="sl-icon" width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+          <svg class="sl-icon" width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
           <div class="sl-info"><div class="sl-label">LinkedIn</div><div class="sl-val">linkedin.com/in/prangonchy-aust</div></div>
         </a>
         <a href="https://scholar.google.com/citations?user=YOqfydcAAAAJ&hl=en&oi=ao" target="_blank" class="social-link">
-          <svg class="sl-icon" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 14l9-5-9-5-9 5 9 5z"/><path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/></svg>
+          <svg class="sl-icon" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 14l9-5-9-5-9 5 9 5z"/><path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/></svg>
           <div class="sl-info"><div class="sl-label">Google Scholar</div><div class="sl-val">View all publications</div></div>
         </a>
+        <a href="#" class="social-link" id="cv-link">
+          <svg class="sl-icon" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+          <div class="sl-info"><div class="sl-label">CV</div><div class="sl-val">Download CV (PDF)</div></div>
+        </a>
         <div class="social-link" style="cursor:default;">
-          <svg class="sl-icon" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          <svg class="sl-icon" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
           <div class="sl-info"><div class="sl-label">Location</div><div class="sl-val">Dhaka, Bangladesh</div></div>
         </div>
       </div>
@@ -1099,28 +1049,30 @@ h1.hero-name { animation-delay: 0.14s; }
         <div class="form-row">
           <div class="field">
             <label>Name</label>
-            <input type="text" id="senderName" placeholder="Your name">
+            <input type="text" id="f-name" placeholder="Your name" required>
           </div>
           <div class="field">
             <label>Email</label>
-            <input type="email" id="senderEmail" placeholder="your@email.com">
+            <input type="email" id="f-email" placeholder="your@email.com" required>
           </div>
         </div>
         <div class="field">
           <label>Subject</label>
-          <input type="text" id="msgSubject" placeholder="Research collaboration, etc.">
+          <input type="text" id="f-subject" placeholder="Research collaboration, etc." required>
         </div>
         <div class="field">
           <label>Message</label>
-          <textarea id="msgBody" placeholder="Your message..."></textarea>
+          <textarea id="f-message" placeholder="Your message..." required></textarea>
         </div>
-        <button class="send-btn" id="sendBtn" onclick="sendMessage()">Send Message →</button>
-        <div class="form-status" id="formStatus">✓ Opening your email client…</div>
+        <div id="form-status" class="form-status"></div>
+        <button class="send-btn" id="sendBtn" onclick="sendEmail()">
+          <span id="sendLabel">Send Message →</span>
+        </button>
       </div>
     </div>
   </div>
 </div>
-</section>
+</div>
 
 <footer>
   <span>© 2026 Prangon Chowdhury. All rights reserved.</span>
@@ -1130,23 +1082,37 @@ h1.hero-name { animation-delay: 0.14s; }
 <script>
 /* ── THEME ── */
 function toggleTheme() {
-  const html = document.documentElement;
-  html.dataset.theme = html.dataset.theme === 'dark' ? 'light' : 'dark';
+  document.documentElement.dataset.theme =
+    document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
 }
 
-/* ── MOBILE NAV ── */
-function toggleMobileNav() {
-  const nav = document.getElementById('mobileNav');
-  const btn = document.getElementById('hamburger');
-  const open = nav.classList.toggle('open');
-  btn.classList.toggle('open', open);
-  document.body.style.overflow = open ? 'hidden' : '';
+/* ── HAMBURGER ── */
+function toggleMenu() {
+  document.getElementById('hamburger').classList.toggle('open');
+  document.getElementById('navMobile').classList.toggle('open');
 }
-function closeMobileNav() {
-  document.getElementById('mobileNav').classList.remove('open');
+function closeMenu() {
   document.getElementById('hamburger').classList.remove('open');
-  document.body.style.overflow = '';
+  document.getElementById('navMobile').classList.remove('open');
 }
+
+/* ── GO TO TOP ── */
+const goTopBtn = document.getElementById('goTop');
+window.addEventListener('scroll', () => {
+  goTopBtn.classList.toggle('visible', window.scrollY > 400);
+}, { passive: true });
+
+/* ── NAV HIGHLIGHT ── */
+const navLinks = document.querySelectorAll('.nav-links a, .nav-mobile a');
+window.addEventListener('scroll', () => {
+  let cur = '';
+  document.querySelectorAll('[id]').forEach(s => {
+    if (window.scrollY >= s.offsetTop - 130) cur = s.id;
+  });
+  navLinks.forEach(a => {
+    a.style.color = a.getAttribute('href') === '#' + cur ? 'var(--accent)' : '';
+  });
+}, { passive: true });
 
 /* ── TABS ── */
 function switchTab(id, btn) {
@@ -1165,41 +1131,34 @@ function filterPubs(type, btn) {
   });
 }
 
-/* ── NAV HIGHLIGHT ── */
-const sections = document.querySelectorAll('section[id]');
-const navLinks = document.querySelectorAll('.nav-links a');
-window.addEventListener('scroll', () => {
-  let cur = '';
-  sections.forEach(s => { if (window.scrollY >= s.offsetTop - 120) cur = s.id; });
-  navLinks.forEach(a => {
-    a.style.color = a.getAttribute('href') === '#' + cur ? 'var(--accent)' : '';
-  });
-  // Back to top
-  const btt = document.getElementById('backToTop');
-  if (window.scrollY > 400) btt.classList.add('visible');
-  else btt.classList.remove('visible');
-}, { passive: true });
+/* ── CONTACT FORM → opens email client with prefilled content ── */
+function sendEmail() {
+  const name    = document.getElementById('f-name').value.trim();
+  const email   = document.getElementById('f-email').value.trim();
+  const subject = document.getElementById('f-subject').value.trim();
+  const message = document.getElementById('f-message').value.trim();
+  const status  = document.getElementById('form-status');
 
-/* ── CONTACT FORM → MAILTO ── */
-function sendMessage() {
-  const name    = document.getElementById('senderName').value.trim();
-  const email   = document.getElementById('senderEmail').value.trim();
-  const subject = document.getElementById('msgSubject').value.trim();
-  const body    = document.getElementById('msgBody').value.trim();
-
-  if (!name || !email || !body) {
-    alert('Please fill in your name, email, and message.');
+  if (!name || !email || !subject || !message) {
+    status.className = 'form-status error';
+    status.textContent = 'Please fill in all fields before sending.';
+    return;
+  }
+  if (!/\S+@\S+\.\S+/.test(email)) {
+    status.className = 'form-status error';
+    status.textContent = 'Please enter a valid email address.';
     return;
   }
 
-  const fullBody = `Name: ${name}\nEmail: ${email}\n\n${body}`;
-  const mailtoLink = `mailto:prangon.aust@gmail.com?subject=${encodeURIComponent(subject || 'Message from Portfolio')}&body=${encodeURIComponent(fullBody)}`;
+  const body = encodeURIComponent(
+    `Name: ${name}\nEmail: ${email}\n\n${message}`
+  );
+  const mailtoLink = `mailto:prangon.aust@gmail.com?subject=${encodeURIComponent(subject)}&body=${body}`;
 
   window.location.href = mailtoLink;
 
-  const status = document.getElementById('formStatus');
-  status.style.display = 'block';
-  setTimeout(() => { status.style.display = 'none'; }, 4000);
+  status.className = 'form-status success';
+  status.textContent = '✓ Your email client has opened with the message pre-filled. Please send it from there.';
 }
 </script>
 </body>
